@@ -8,7 +8,7 @@
       </div>   
     </template>
     <template #fallback>
-      Loading...
+      <ChartSkeleton/>
     </template>
   </Suspense>
 
@@ -19,6 +19,7 @@
 import { ref, onMounted } from 'vue';
 import { allAPI } from '../API';
 import Chart from '../components/Chart.vue';
+import ChartSkeleton from '../components/ChartSkeleton.vue';
 
 let month
 let year
