@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue'
-import Artic from '../views/Artic.vue'
+import Arctic from '../views/Arctic.vue'
 import Co2 from '../views/Co2.vue'
 import Methane from '../views/Methane.vue'
 import No2 from '../views/No2.vue'
@@ -14,9 +14,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/Artic',
-    name: 'Artic',
-    component: Artic
+    path: '/Arctic',
+    name: 'Arctic',
+    component: Arctic
   },
   {
     path: '/Co2',

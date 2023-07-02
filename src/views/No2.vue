@@ -6,6 +6,10 @@
 
 <script setup>
 
+import { allAPI } from '../API';
+
+  (async () => { const{ no2API } = await allAPI() })();
+   
 </script>
 
 <style lang="scss" scoped>
