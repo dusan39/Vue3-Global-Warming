@@ -1,14 +1,13 @@
 <template>
   <div>
+    <Navbar></Navbar>
     <h1>Methane</h1>
   </div>
 </template>
 
 <script setup>
 
-import { allAPI } from '../API';
-
-  (async () => { const{ methaneAPI } = await allAPI() })(); 
+import Navbar from '../components/Navbar.vue';
 
 </script>
 

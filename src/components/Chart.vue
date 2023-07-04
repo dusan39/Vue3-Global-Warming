@@ -1,58 +1,45 @@
 <template>
-
-  <canvas :id="canvasId"></canvas>
-
+  <canvas :id="props.canvasId"></canvas>
 </template>
 
 <script setup>
 
-import { ref, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 import Chart from 'chart.js/auto';
 
-const { props } = defineProps({
-  canvasId: {
-    type: String,
-    required: true,
-  },
-});
+  const props = defineProps({
+    canvasId: {
+      type: String,
+      required: true,
+    },
+    labels: {
+      type: Array,
+      required: true,
+    },
+    datasets: {
+      type: Object,
+      required: true,
+    },
+  });
 
-const labels = ref([]);
-const data = ref([]);
-const label = ref('');
+  const chart = ref(null);
 
-  function createChart() {
+  function createChart () {
     const ctx = document.getElementById(props.canvasId);
     const config = {
       type: 'line',
       data: {
-        labels: labels.value,
-        datasets: [
-          {
-            label: label.value,
-            backgroundColor: '#19A7CE',
-            borderColor: '#19A7CE',
-            data: data.value,
-          },
-        ],
+        labels: props.labels,
+        datasets: props.datasets,
       },
       options: {},
     };
-
-    const chart = new Chart(ctx, config);
-    console.log('Sono dentro createChart')
+    chart.value = new Chart(ctx, config);
   }
-
-  const loadData = async () => {
-    return new Promise((resolve) => {
-      setTimeout(() =>{
-        resolve({
-          createChart
-        });
-      }, 3000, console.log('Sono dentro loadData'));  
-    });
-  };
   
-  const chartAwait = ref(await loadData())
+  onMounted(() => {
+    createChart()
+  });
 
 </script>
 
