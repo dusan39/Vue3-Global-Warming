@@ -2,10 +2,17 @@
 
   <Suspense>
     <template #default>
-      <div>
+      <div class="arctic__container">
         <Navabr></Navabr>
-        <h1>Arctic</h1>
-        <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
+
+        <div class="title__container">
+          <h1>Arctic</h1>
+        </div>
+        
+        <div class="chart__container">
+          <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
+        </div>
+        
       </div>   
     </template>
     <template #fallback>
@@ -50,8 +57,8 @@ import ChartSkeleton from '../components/ChartSkeleton.vue';
       labels: chartLabels.value,
       data: areaData.value,
       label: 'Area',
-      backgroundColor: '#FFC0CB',
-      borderColor: '#FFC0CB',
+      backgroundColor: '#a8dadc',
+      borderColor: '#a8dadc',
     },
     {
       labels: chartLabels.value,
@@ -80,5 +87,22 @@ import ChartSkeleton from '../components/ChartSkeleton.vue';
 </script>
 
 <style lang="scss">
+
+  .title__container{
+    display: flex;
+    justify-content: center;
+    padding-top: 1%;
+  }
+
+  .chart__container{
+    border-radius: 50px;
+    padding: 30px;
+    margin: 1% 8% 8% 8%;
+
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(10px);
+  }
 
 </style>

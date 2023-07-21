@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.1",
+    "@vueuse/motion": "^2.0.0",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "vue": "^3.2.47",

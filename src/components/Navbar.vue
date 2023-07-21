@@ -3,7 +3,7 @@
   <header class="header">
     <div class="header__content">
       <a class="header__logo">
-        <h2>Global Warming</h2>
+        <routerLink to="/"><img width="48" height="48" src="https://img.icons8.com/fluency/48/global-warming.png" alt="global-warming"/></routerLink>
       </a>
       <ul class="header__menu">
         <routerLink to="/">Home</routerLink>
@@ -12,6 +12,7 @@
         <routerLink :to="{ name: 'Methane' }">Methane</routerLink>
         <routerLink :to="{ name: 'No2' }">No2</routerLink>
         <routerLink :to="{ name: 'Temperature' }">Temperature</routerLink>
+        <DarkMode></DarkMode>
       </ul>
       <div class="header__icons">
         <div class="icon-hamburger">
@@ -25,40 +26,38 @@
 </template>
 
 <script setup>
+import DarkMode from './DarkMode.vue';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    let item = document.querySelector('.icon-hamburger');
-    
-    item.addEventListener('click', function () {
-      document.body.classList.toggle('menu-open');
-    });
+ document.addEventListener('DOMContentLoaded', () => {
+  let item = document.querySelector('.icon-hamburger');
+  let menu = document.querySelector('.header__menu');
 
-    let links = document.querySelectorAll('.menu-link');
-    links.forEach((link) => {
-      link.addEventListener('click', function () {
-        document.body.classList.toggle('menu-open');
-      });
-    });
+  item.addEventListener('click', function () {
+    document.body.classList.toggle('menu-open');
   });
+
+  menu.addEventListener('click', function (event) {
+    if (event.target.tagName === 'A') {
+      document.body.classList.toggle('menu-open');
+    }
+  });
+});
 
 </script>
 
 <style lang="scss">
  
 .header{
-  background-color: #1d1d1f;
-  position: sticky;
   top: 0;
-  color: white;
   z-index: 9999;
   width: 100%;
 }
 
 .header__content{max-width: 1200px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between;}
 .header__logo{padding: 10px 10px 10px 20px; margin: 0px; order: 1;}
-.header__logo h2{margin: 0px; font-size: 24px;}
+.header__logo a{margin: 0px; font-size: 24px;}
 .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center;}
-.header__menu a{display: inline-block; opacity: 0.8; padding: 10px 20px; text-decoration: none; color: white;}
+.header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none; color: white;}
 .header__icons{width: 50px; order: 2;}
 
 @media(min-width: 1201px){

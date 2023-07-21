@@ -46,15 +46,15 @@ import ChartSkeleton from '../components/ChartSkeleton.vue';
       labels: chartLabels.value,
       data: cycleData.value,
       label: 'Cycle',
-      backgroundColor: '#19A7CE',
-      borderColor: '#19A7CE',
+      backgroundColor: '#aec3b0',
+      borderColor: '#aec3b0',
     },
     {
       labels: chartLabels.value,
       data: trendData.value,
       label: 'Trend',
-      backgroundColor: '#FFA500',
-      borderColor: '#FFA500',
+      backgroundColor: '#124559',
+      borderColor: '#124559',
     },
   ];
     
