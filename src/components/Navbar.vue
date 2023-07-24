@@ -5,7 +5,7 @@
       <a class="header__logo">
         <routerLink to="/"><img width="48" height="48" src="https://img.icons8.com/fluency/48/global-warming.png" alt="global-warming"/></routerLink>
       </a>
-      <ul class="header__menu">
+      <ul class="header__menu" >
         <routerLink to="/">Home</routerLink>
         <routerLink :to="{ name: 'Arctic' }">Arctic</routerLink>
         <routerLink :to="{ name: 'Co2' }">Co2</routerLink>
@@ -57,7 +57,7 @@ import DarkMode from './DarkMode.vue';
 .header__logo{padding: 10px 10px 10px 20px; margin: 0px; order: 1;}
 .header__logo a{margin: 0px; font-size: 24px;}
 .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center;}
-.header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none; color: white;}
+.header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none;}
 .header__icons{width: 50px; order: 2;}
 
 @media(min-width: 1201px){

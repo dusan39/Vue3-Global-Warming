@@ -1,5 +1,9 @@
 <template>
-  <canvas :id="props.canvasId"></canvas>
+
+  <div class="chart__container">
+    <canvas :id="props.canvasId"></canvas>
+  </div>
+  
 </template>
 
 <script setup>
@@ -44,5 +48,16 @@ import Chart from 'chart.js/auto';
 </script>
 
 <style lang="scss">
+
+  .chart__container{
+    border-radius: 50px;
+    padding: 30px;
+    margin: 1% 8% 8% 8%;
+
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(10px);
+  }
 
 </style>
