@@ -1,17 +1,10 @@
 <template>
 
-  <Suspense>
-    <template #default>
-      <div>
-        <Navabr></Navabr>
-        <h1>Co2</h1>
-        <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
-      </div>   
-    </template>
-    <template #fallback>
-      <ChartSkeleton/>
-    </template>
-  </Suspense> 
+  <div>
+    <Navabr></Navabr>
+    <h1>{{ $t('co2') }}</h1>
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
+  </div>   
 
 </template>
 
@@ -21,7 +14,6 @@ import { ref, onMounted } from 'vue';
 import { allAPI } from '../API';
 import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
-import ChartSkeleton from '../components/ChartSkeleton.vue';
 
   const cycleData = ref([]);
   const trendData = ref([]);

@@ -3,16 +3,18 @@
   <header class="header">
     <div class="header__content">
       <a class="header__logo">
-        <routerLink to="/"><img width="48" height="48" src="https://img.icons8.com/fluency/48/global-warming.png" alt="global-warming"/></routerLink>
+        <routerLink to="/"><img width="48" height="48" src="../assets/logo.svg" alt="global-warming"/></routerLink>
       </a>
       <ul class="header__menu" >
-        <routerLink to="/">Home</routerLink>
-        <routerLink :to="{ name: 'Arctic' }">Arctic</routerLink>
-        <routerLink :to="{ name: 'Co2' }">Co2</routerLink>
-        <routerLink :to="{ name: 'Methane' }">Methane</routerLink>
-        <routerLink :to="{ name: 'No2' }">No2</routerLink>
-        <routerLink :to="{ name: 'Temperature' }">Temperature</routerLink>
-        <DarkMode></DarkMode>
+        <routerLink :to="{ name: 'Arctic' }">{{ $t('arctic') }}</routerLink>
+        <routerLink :to="{ name: 'Co2' }">{{ $t('co2') }}</routerLink>
+        <routerLink :to="{ name: 'Methane' }">{{ $t('methane') }}</routerLink>
+        <routerLink :to="{ name: 'No2' }">{{ $t('no2') }}</routerLink>
+        <routerLink :to="{ name: 'Temperature' }">{{ $t('temperature') }}</routerLink>
+        <button class="menu__language" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/united-kingdom.svg" alt=""> </button>
+        <button class="menu__language" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/italy.svg" alt=""> </button>
+        <button v-show="isDark === true" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('lightMode') }}</button>
+        <button v-show="isDark === false" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('darkMode') }}</button>
       </ul>
       <div class="header__icons">
         <div class="icon-hamburger">
@@ -26,7 +28,20 @@
 </template>
 
 <script setup>
-import DarkMode from './DarkMode.vue';
+import i18n from '../locales/i18n';
+import { useDark, useToggle } from '@vueuse/core';
+import { ref } from 'vue';
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+const locale = ref('it'); 
+
+  function changeLocale(newLocale) {
+    console.log(isDark.value)
+    locale.value = newLocale;
+    i18n.global.locale = newLocale;
+  }
+
 
  document.addEventListener('DOMContentLoaded', () => {
   let item = document.querySelector('.icon-hamburger');
@@ -58,6 +73,9 @@ import DarkMode from './DarkMode.vue';
 .header__logo a{margin: 0px; font-size: 24px;}
 .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center;}
 .header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none;}
+.header__menu .menu__language{margin-right: 20px;}
+.header__menu .menu__language img{display: inline-block;}
+.header__menu button img{width: 50px;}
 .header__icons{width: 50px; order: 2;}
 
 @media(min-width: 1201px){
@@ -75,8 +93,10 @@ import DarkMode from './DarkMode.vue';
     height: 0vh;
     overflow: hidden;
     transition: all 1s cubic-bezier(.215, .61, .355, 1);
+    z-index: 99999;
   }
   .header__logo{padding: 10px 20px; margin: 0px; align-self: center;}
+  .header__content{background-color: #1d1d1f;}
   .header__menu a{display: flex; width: 100%; border-bottom: 1px solid #444;}
   .menu-open .header__menu{height: 50vh;}
 

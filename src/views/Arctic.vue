@@ -4,7 +4,7 @@
       <Navbar></Navbar>
 
       <div class="title__container">
-        <h1>Arctic</h1>
+        <h1>{{ $t('arctic') }}</h1>
       </div>
 
       <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />

@@ -1,4 +1,12 @@
 {
+  "home": "Home",
+  "arctic": "Artico",
+  "co2": "Co2",
+  "methane": "Metano",
+  "no2": "No2",
+  "temperature": "Temperatura",
+  "darkMode": "Modalità scuro",
+  "lightMode": "Modalità chiaro",
   "title": "Rivelando la verità attorno al riscaldamento globale",
   "titleDescription": "In questa web app vi mostreremo l'impatto reale del riscaldamento globale durante le ultime decadi, con grafici specifici con diversi dati, dal Livello dei ghiacciai all'aumentare delle temperature.",
   "showCharts": "Mostra grafici"

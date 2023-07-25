@@ -4,7 +4,7 @@
     <template #default>
       <div>
         <Navabr></Navabr>
-        <h1>Temperature</h1>
+        <h1>{{ $t('temperature') }}</h1>
         <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" />
       </div>   
     </template>
@@ -21,7 +21,6 @@ import { ref, onMounted } from 'vue';
 import { allAPI } from '../API';
 import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
-import ChartSkeleton from '../components/ChartSkeleton.vue';
 
   const landData = ref([]);
   const stationData = ref([]);
