@@ -1,6 +1,6 @@
 <template>
 
-  <div v-motion-slide-left class="hero__container">
+  <div class="hero__container">
     <div class="title__container">
       <h1>{{ $t('title') }}</h1>
       <p>{{ $t('titleDescription') }}</p>
