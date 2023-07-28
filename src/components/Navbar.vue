@@ -37,7 +37,6 @@ const toggleDark = useToggle(isDark)
 const locale = ref('it'); 
 
   function changeLocale(newLocale) {
-    console.log(isDark.value)
     locale.value = newLocale;
     i18n.global.locale = newLocale;
   }

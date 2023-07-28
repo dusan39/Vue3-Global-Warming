@@ -11,7 +11,7 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { allAPI } from '../API';
+import { co2Data } from '../API';
 import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
@@ -24,7 +24,7 @@ import Chart from '../components/Chart.vue';
   let dataLoaded = ref(false);
 
   async function loadCo2API () {
-    const { co2API } = await allAPI();
+    const { co2API } = await co2Data();
 
     co2API.forEach(obj => {
       const fullDate = obj.day + '/' + obj.month + '/' + obj.year;

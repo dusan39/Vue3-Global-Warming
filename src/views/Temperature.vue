@@ -1,24 +1,17 @@
 <template>
 
-  <Suspense>
-    <template #default>
-      <div>
-        <Navabr></Navabr>
-        <h1>{{ $t('temperature') }}</h1>
-        <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" />
-      </div>   
-    </template>
-    <template #fallback>
-      <ChartSkeleton/>
-    </template>
-  </Suspense> 
+  <div>
+    <Navabr></Navabr>
+    <h1>{{ $t('temperature') }}</h1>
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" />
+  </div>   
 
 </template>
 
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { allAPI } from '../API';
+import { temperatureData } from '../API';
 import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
@@ -31,7 +24,7 @@ import Chart from '../components/Chart.vue';
   let dataLoaded = ref(false);
 
   async function loadTemperatureAPI () {
-    const { temperatureAPI } = await allAPI();
+    const { temperatureAPI } = await temperatureData();
 
     temperatureAPI.forEach(obj => {
       chartLabels.value.push(obj.time);

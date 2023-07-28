@@ -15,7 +15,7 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { allAPI } from '../API';
+import { arcticData } from '../API';
 import Navbar from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
@@ -29,7 +29,7 @@ import Chart from '../components/Chart.vue';
   let dataLoaded = ref(false);
 
   async function loadArcticAPI () {
-    const { arcticAPI } = await allAPI();
+    const { arcticAPI } = await arcticData();
 
     arcticAPI.forEach(obj => {
       const fullDate = obj.month + '/' + obj.year;

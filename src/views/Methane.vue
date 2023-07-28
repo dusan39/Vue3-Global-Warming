@@ -11,7 +11,7 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
-import { allAPI } from '../API';
+import { methaneData } from '../API';
 import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
@@ -24,9 +24,7 @@ import Chart from '../components/Chart.vue';
   let dataLoaded = ref(false);
 
   async function loadMethaneAPI () {
-    const { methaneAPI } = await allAPI();
-
-    console.log(methaneAPI)
+    const { methaneAPI } = await methaneData();
 
     methaneAPI.forEach(obj => {
       if(obj.date != "#.year"){
