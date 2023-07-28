@@ -24,26 +24,34 @@ import Chart from 'chart.js/auto';
       type: Object,
       required: true,
     },
+    type:{
+      type: String,
+      required: true
+    },
+    animation:{
+      type: Boolean,
+      required: true
+    }
   });
 
   const chart = ref(null);
 
-  function createChart () {
+  const createChart = async () => {
     const ctx = document.getElementById(props.canvasId);
     const config = {
-      type: 'line',
+      type: props.type,
       data: {
         labels: props.labels,
         datasets: props.datasets,
       },
-      options: {},
+      options: {
+        animation: props.animation
+      },
     };
     chart.value = new Chart(ctx, config);
   }
-  
-  onMounted(() => {
-    createChart()
-  });
+
+  onMounted(createChart);
 
 </script>
 

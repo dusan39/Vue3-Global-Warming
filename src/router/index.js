@@ -1,11 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue'
-import Arctic from '../views/Arctic.vue'
-import Co2 from '../views/Co2.vue'
-import Methane from '../views/Methane.vue'
-import No2 from '../views/No2.vue'
-import Temperature from '../views/Temperature.vue'
-
 
 const routes = [
   { 
@@ -16,27 +10,27 @@ const routes = [
   {
     path: '/Arctic',
     name: 'Arctic',
-    component: Arctic
+    component: () => import('../views/Arctic.vue')
   },
   {
     path: '/Co2',
     name: 'Co2',
-    component: Co2
+    component: () => import('../views/Co2.vue')
   },
   {
     path: '/Methane',
     name: 'Methane',
-    component: Methane
+    component: () => import('../views/Methane.vue')
   },
   {
     path: '/No2',
     name: 'No2',
-    component: No2
+    component: () => import('../views/No2.vue')
   },
   {
     path: '/Temperature',
     name: 'Temperature',
-    component: Temperature
+    component: () => import('../views/Temperature.vue')
   }
 ]
 

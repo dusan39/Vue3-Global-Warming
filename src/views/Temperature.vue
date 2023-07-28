@@ -3,7 +3,7 @@
   <div>
     <Navabr></Navabr>
     <h1>{{ $t('temperature') }}</h1>
-    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" />
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" :type="chartType" :animation="chartAnimation" />
   </div>   
 
 </template>
@@ -20,6 +20,9 @@ import Chart from '../components/Chart.vue';
 
   const chartDatasets = ref([]);
   const chartLabels = ref([]);
+
+  const chartType = ref();
+  const chartAnimation = ref();
   
   let dataLoaded = ref(false);
 
@@ -48,14 +51,15 @@ import Chart from '../components/Chart.vue';
         borderColor: '#146C94',
       }
     ];
+
+    chartType.value = 'line'
+    chartAnimation.value = true
       
     chartDatasets.value = datasets
     dataLoaded.value = true
   }
 
-  onMounted(() => {
-    loadTemperatureAPI();
-  });
+  onMounted(loadTemperatureAPI)
 
 </script>
 

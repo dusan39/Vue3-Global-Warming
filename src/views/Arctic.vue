@@ -7,7 +7,7 @@
         <h1>{{ $t('arctic') }}</h1>
       </div>
 
-      <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
+      <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" :type="chartType" :animation="chartAnimation" />
     </div>   
 
 </template>
@@ -25,6 +25,9 @@ import Chart from '../components/Chart.vue';
 
   const chartDatasets = ref([]);
   const chartLabels = ref([]);
+
+  const chartType = ref();
+  const chartAnimation = ref();
   
   let dataLoaded = ref(false);
 
@@ -40,36 +43,37 @@ import Chart from '../components/Chart.vue';
     });
 
     const datasets = [
-    {
-      labels: chartLabels.value,
-      data: areaData.value,
-      label: 'Area',
-      backgroundColor: '#a8dadc',
-      borderColor: '#a8dadc',
-    },
-    {
-      labels: chartLabels.value,
-      data: rankData.value,
-      label: 'Rank',
-      backgroundColor: '#19A7CE',
-      borderColor: '#19A7CE',
-    },
-    {
-      labels: chartLabels.value,
-      data: extentData.value,
-      label: 'Extent',
-      backgroundColor: '#FFA500',
-      borderColor: '#FFA500',
-    },
-  ];
+      {
+        labels: chartLabels.value,
+        data: areaData.value,
+        label: 'Area',
+        backgroundColor: '#a8dadc',
+        borderColor: '#a8dadc',
+      },
+      {
+        labels: chartLabels.value,
+        data: rankData.value,
+        label: 'Rank',
+        backgroundColor: '#19A7CE',
+        borderColor: '#19A7CE',
+      },
+      {
+        labels: chartLabels.value,
+        data: extentData.value,
+        label: 'Extent',
+        backgroundColor: '#FFA500',
+        borderColor: '#FFA500',
+      },
+    ];
+
+    chartType.value = 'line'
+    chartAnimation.value = true
 
     chartDatasets.value = datasets
     dataLoaded.value = true
   }
 
-  onMounted(() => {
-    loadArcticAPI();
-  });
+  onMounted(loadArcticAPI)
 
 </script>
 

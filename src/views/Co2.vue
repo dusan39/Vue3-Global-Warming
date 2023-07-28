@@ -3,7 +3,7 @@
   <div>
     <Navabr></Navabr>
     <h1>{{ $t('co2') }}</h1>
-    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" />
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="co2Chart" :type="chartType" :animation="chartAnimation" />
   </div>   
 
 </template>
@@ -20,6 +20,9 @@ import Chart from '../components/Chart.vue';
 
   const chartDatasets = ref([]);
   const chartLabels = ref([]);
+
+  const chartType = ref();
+  const chartAnimation = ref();
   
   let dataLoaded = ref(false);
 
@@ -34,29 +37,30 @@ import Chart from '../components/Chart.vue';
     });
 
     const datasets = [
-    {
-      labels: chartLabels.value,
-      data: cycleData.value,
-      label: 'Cycle',
-      backgroundColor: '#aec3b0',
-      borderColor: '#aec3b0',
-    },
-    {
-      labels: chartLabels.value,
-      data: trendData.value,
-      label: 'Trend',
-      backgroundColor: '#124559',
-      borderColor: '#124559',
-    },
-  ];
+      {
+        labels: chartLabels.value,
+        data: cycleData.value,
+        label: 'Cycle',
+        backgroundColor: '#aec3b0',
+        borderColor: '#aec3b0',
+      },
+      {
+        labels: chartLabels.value,
+        data: trendData.value,
+        label: 'Trend',
+        backgroundColor: '#124559',
+        borderColor: '#124559',
+      },
+    ];
+
+    chartType.value = 'line'
+    chartAnimation.value = false
     
     chartDatasets.value = datasets
     dataLoaded.value = true
   }
 
-  onMounted(() => {
-    loadCo2API();
-  });
+  onMounted(loadCo2API)
 
 </script>
 

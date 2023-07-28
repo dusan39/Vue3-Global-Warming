@@ -3,7 +3,7 @@
   <div>
     <Navabr></Navabr>
     <h1>{{ $t('no2') }}</h1>
-    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="no2Chart" />
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="no2Chart" :type="chartType" :animation="chartAnimation" />
   </div>   
 
 </template>
@@ -20,6 +20,9 @@ import Chart from '../components/Chart.vue';
 
   const chartDatasets = ref([]);
   const chartLabels = ref([]);
+
+  const chartType = ref();
+  const chartAnimation = ref();
 
   let dataLoaded = ref(false);
 
@@ -50,14 +53,15 @@ import Chart from '../components/Chart.vue';
         borderColor: '#a8dadc',
       }
     ];
+
+    chartType.value = 'line'
+    chartAnimation.value = true
       
     chartDatasets.value = datasets
     dataLoaded.value = true
   }
 
-  onMounted(() => {
-    loadNo2API();
-  });
+  onMounted(loadNo2API)
 
 </script>
 

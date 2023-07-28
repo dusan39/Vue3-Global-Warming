@@ -41,7 +41,6 @@ const locale = ref('it');
     i18n.global.locale = newLocale;
   }
 
-
  document.addEventListener('DOMContentLoaded', () => {
   let item = document.querySelector('.icon-hamburger');
   let menu = document.querySelector('.header__menu');

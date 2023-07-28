@@ -3,7 +3,7 @@
   <div>
     <Navabr></Navabr>
     <h1>{{ $t('methane') }}</h1>
-    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="methaneChart" />
+    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="methaneChart" :type="chartType" :animation="chartAnimation" />
   </div>   
 
 </template>
@@ -20,6 +20,9 @@ import Chart from '../components/Chart.vue';
 
   const chartDatasets = ref([]);
   const chartLabels = ref([]);
+
+  const chartType = ref();
+  const chartAnimation = ref();
   
   let dataLoaded = ref(false);
 
@@ -50,14 +53,15 @@ import Chart from '../components/Chart.vue';
         borderColor: '#073b4c',
       },
     ];
+
+    chartType.value = 'line'
+    chartAnimation.value = true
     
     chartDatasets.value = datasets
     dataLoaded.value = true
   }
 
-  onMounted(() => {
-    loadMethaneAPI();
-  });
+  onMounted(loadMethaneAPI)
 
 </script>
 
