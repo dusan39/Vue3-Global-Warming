@@ -1,7 +1,6 @@
 <template>
 
     <div class="arctic__container">
-      <Navbar></Navbar>
 
       <div class="title__container">
         <h1>{{ $t('arctic') }}</h1>

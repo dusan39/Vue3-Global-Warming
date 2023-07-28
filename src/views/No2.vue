@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <Navabr></Navabr>
     <h1>{{ $t('no2') }}</h1>
     <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="no2Chart" :type="chartType" :animation="chartAnimation" />
   </div>   

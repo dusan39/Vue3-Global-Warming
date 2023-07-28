@@ -1,28 +1,24 @@
 <template>
 
-    <div class="navbar__container">
-      <Navbar></Navbar> 
-    </div>
+  <div v-motion-slide-left class="hero__container">
+    <div class="title__container">
+      <h1>{{ $t('title') }}</h1>
+      <p>{{ $t('titleDescription') }}</p>
 
-    <div v-motion-slide-left class="hero__container">
-      <div class="title__container">
-        <h1>{{ $t('title') }}</h1>
-        <p>{{ $t('titleDescription') }}</p>
-
-        <div class="show__charts__container">
-          <button class="show__charts">{{ $t('showCharts') }}</button>
-        </div>   
-      </div>
-      
-      <div class="image__container">
-        <h2>prova prova prova</h2>
-      </div>
+      <div class="show__charts__container">
+        <button class="show__charts">{{ $t('showCharts') }}</button>
+      </div>   
     </div>
+    
+    <div class="image__container">
+      <h2>prova prova prova</h2>
+    </div>
+  </div>
   
 </template>
 
 <script setup>
-import Navbar from '../components/Navbar.vue';
+
 
 </script>
 
