@@ -13,8 +13,8 @@
         <routerLink :to="{ name: 'Temperature' }">{{ $t('temperature') }}</routerLink>
         <button class="menu__language" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/united-kingdom.svg" alt=""> </button>
         <button class="menu__language" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/italy.svg" alt=""> </button>
-        <button v-show="isDark === true" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('lightMode') }}</button>
-        <button v-show="isDark === false" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('darkMode') }}</button>
+        <button id="dark__mode" v-show="isDark === true" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('lightMode') }}</button>
+        <button id="dark__mode" v-show="isDark === false" @click="toggleDark()" class="px-4 py-2 text-white bg-green-500 rounded dark:bg-purple-500">{{ $t('darkMode') }}</button>
       </ul>
       <div class="header__icons">
         <div class="icon-hamburger">
@@ -68,6 +68,7 @@ const locale = ref('it');
 
 .header__content{max-width: 1200px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between;}
 .header__logo{padding: 10px 10px 10px 20px; margin: 0px; order: 1;}
+#dark__mode{margin: 0px 20px 0px 0px;}
 .header__logo a{margin: 0px; font-size: 24px;}
 .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center;}
 .header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none;}
@@ -78,6 +79,7 @@ const locale = ref('it');
 
 @media(min-width: 1201px){
   .header__logo{padding: 10px 10px 10px 0px;}
+  #dark__mode{margin: 0px 0px 0px 0px;}
   .header__menu li:nth-child(4){padding-right: 0px !important;}
 }
 
