@@ -68,4 +68,11 @@ import Chart from 'chart.js/auto';
     backdrop-filter: blur(10px);
   }
 
+  @media (max-width: 390px){
+    .chart__container{
+      margin: 1% 2% 2% 2%;
+      padding: 10px;
+    }
+  }
+
 </style>

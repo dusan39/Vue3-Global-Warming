@@ -98,6 +98,7 @@ const locale = ref('it');
   .header__logo{padding: 10px 20px; margin: 0px; align-self: center;}
   .header__content{background-color: #1d1d1f;}
   .header__menu a{display: flex; width: 100%; border-bottom: 1px solid #444;}
+  .header__menu button{align-self: center;}
   .menu-open .header__menu{height: 50vh;}
 
   .icon-hamburger{height: 68px; width: 68px; margin-left: 40px; padding-top: 5px;}

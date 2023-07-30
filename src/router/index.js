@@ -7,7 +7,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'metaTitle'
+      title: 'Global warming'
     }
   },
   {
@@ -15,7 +15,7 @@ const routes = [
     name: 'Arctic',
     component: () => import('../views/Arctic.vue'),
     meta: {
-      title: 'arctic'
+      title: 'Arctic'
     }
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     name: 'Co2',
     component: () => import('../views/Co2.vue'),
     meta: {
-      title: 'co2'
+      title: 'Co2'
     }
   },
   {
@@ -31,7 +31,7 @@ const routes = [
     name: 'Methane',
     component: () => import('../views/Methane.vue'),
     meta: {
-      title: 'methane'
+      title: 'Methane'
     }
   },
   {
@@ -39,7 +39,7 @@ const routes = [
     name: 'No2',
     component: () => import('../views/No2.vue'),
     meta: {
-      title: 'no2'
+      title: 'No2'
     }
   },
   {
@@ -47,7 +47,7 @@ const routes = [
     name: 'Temperature',
     component: () => import('../views/Temperature.vue'),
     meta: {
-      title: 'temperature'
+      title: 'Temperature'
     }
   }
 ]
