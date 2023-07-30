@@ -59,19 +59,22 @@ import Chart from 'chart.js/auto';
 
   .chart__container{
     border-radius: 50px;
-    padding: 30px;
-    margin: 1% 8% 8% 8%;
-
+    padding: 30px; 
     background: rgba(255, 255, 255, .1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
     border: 2px solid rgba(255, 255, 255, .5);
     backdrop-filter: blur(10px);
   }
 
+  @media screen and (max-width: 910px) {
+    
+  }
+
   @media (max-width: 390px){
     .chart__container{
-      margin: 1% 2% 2% 2%;
+      border-radius: 20px;
       padding: 10px;
+      margin: 2%;
     }
   }
 

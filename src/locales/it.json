@@ -10,5 +10,9 @@
   "metaTitle": "Riscaldamento globale",
   "title": "Rivelando la verità attorno al riscaldamento globale",
   "titleDescription": "In questa web app vi mostreremo l'impatto reale del riscaldamento globale durante le ultime decadi, con grafici specifici con diversi dati, dal Livello dei ghiacciai all'aumentare delle temperature.",
-  "showCharts": "Mostra grafici"
+  "showCharts": "Mostra grafici",
+  "areaAverage": "Media dell'area",
+  "rankAverage": "Media del rango",
+  "extentAverage": "Media dell'estensione",
+  "latestData": "Dati più recenti"
 }

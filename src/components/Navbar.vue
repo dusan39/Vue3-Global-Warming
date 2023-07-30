@@ -2,10 +2,11 @@
 
   <header class="header">
     <div class="header__content">
-      <a class="header__logo">
+      <div class="header__logo">
         <routerLink to="/"><img width="48" height="48" src="../assets/logo.svg" alt="global-warming"/></routerLink>
-      </a>
+      </div>
       <ul class="header__menu" >
+        <routerLink :to="{ name: 'Home' }">{{ $t('home') }}</routerLink>
         <routerLink :to="{ name: 'Arctic' }">{{ $t('arctic') }}</routerLink>
         <routerLink :to="{ name: 'Co2' }">{{ $t('co2') }}</routerLink>
         <routerLink :to="{ name: 'Methane' }">{{ $t('methane') }}</routerLink>
@@ -34,27 +35,28 @@ import { ref } from 'vue';
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-const locale = ref('it'); 
+const locale = ref('it');
 
   function changeLocale(newLocale) {
     locale.value = newLocale;
     i18n.global.locale = newLocale;
   }
 
- document.addEventListener('DOMContentLoaded', () => {
-  let item = document.querySelector('.icon-hamburger');
-  let menu = document.querySelector('.header__menu');
+  document.addEventListener('DOMContentLoaded', () => {
+    let item = document.querySelector('.icon-hamburger');
+    let menu = document.querySelector('.header__menu');
+    let logo = document.querySelector('.header__logo');
 
-  item.addEventListener('click', function () {
-    document.body.classList.toggle('menu-open');
-  });
-
-  menu.addEventListener('click', function (event) {
-    if (event.target.tagName === 'A') {
+    item.addEventListener('click', function () {
       document.body.classList.toggle('menu-open');
-    }
+    });
+
+    menu.addEventListener('click', function (event) {
+      if (event.target.tagName === 'A') {
+        document.body.classList.toggle('menu-open');
+      }
+    });
   });
-});
 
 </script>
 
@@ -83,13 +85,13 @@ const locale = ref('it');
   .header__menu li:nth-child(4){padding-right: 0px !important;}
 }
 
-@media (max-width: 860px){
+@media (max-width: 910px){
   .header__menu{
     position: absolute;
     top: 60px;
     background-color: #1d1d1f;
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     height: 0vh;
     overflow: hidden;
     transition: all 1s cubic-bezier(.215, .61, .355, 1);
@@ -99,7 +101,7 @@ const locale = ref('it');
   .header__content{background-color: #1d1d1f;}
   .header__menu a{display: flex; width: 100%; border-bottom: 1px solid #444;}
   .header__menu button{align-self: center;}
-  .menu-open .header__menu{height: 50vh;}
+  .menu-open .header__menu{height: 100vh;}
 
   .icon-hamburger{height: 68px; width: 68px; margin-left: 40px; padding-top: 5px;}
   .icon-hamburger span{height: 1px; width: 50px; background: #fff; position: relative; display: block; margin-top:20px; transition: all 0.6s cubic-bezier(.215, .61, .355, 1);}
