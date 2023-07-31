@@ -39,8 +39,9 @@
         </div>
 
       </div>
-      
-    </div>   
+    </div>
+    
+    <Footer></Footer>   
 
 </template>
 
@@ -49,6 +50,7 @@
 import { ref, onMounted } from 'vue';
 import { arcticData } from '../API';
 import Chart from '../components/Chart.vue';
+import Footer from '../components/Footer.vue';
 
 import { useDark } from '@vueuse/core';
 const isDark = useDark()
