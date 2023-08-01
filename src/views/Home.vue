@@ -1,19 +1,21 @@
 <template>
+  <div>
+    <div class="hero__container">
+      <div class="title__container">
+        <h1>{{ $t('title') }}</h1>
+        <p>{{ $t('titleDescription') }}</p>
 
-  <div class="hero__container">
-    <div class="title__container">
-      <h1>{{ $t('title') }}</h1>
-      <p>{{ $t('titleDescription') }}</p>
-
-      <div class="show__charts__container">
-        <button class="show__charts">{{ $t('showCharts') }}</button>
-      </div>   
-    </div>
+        <div class="show__charts__container">
+          <button class="show__charts">{{ $t('showCharts') }}</button>
+        </div>   
+      </div>
     
-    <div class="image__container">
-      <h2>prova prova prova</h2>
+      <div class="image__container">
+        <h2>prova prova prova</h2>
+      </div>
     </div>
   </div>
+  
   
 </template>
 

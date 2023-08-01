@@ -1,47 +1,49 @@
 <template>
+    <div>
+      <div class="arctic__container">
 
-    <div class="arctic__container">
-
-      <div class="title__container">
-        <h1>{{ $t('arctic') }}</h1>
-      </div>
-
-      <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" :type="chartType" :animation="chartAnimation" />
-
-      <div class="media__container">
-
-        <div class="media__item">
-          <img v-show="isDark === true" src="../assets/arctic/area/area-dark.svg" alt="">
-          <img v-show="isDark === false" src="../assets/arctic/area/area-light.svg" alt="">
-          <h3>{{ areaMediaRounded }}</h3>
-          <h2>{{ $t('areaAverage') }}</h2>
-        </div>
-        
-        <div class="media__item">
-          <img v-show="isDark === true" src="../assets/arctic/rank/rank-dark.svg" alt="">
-          <img v-show="isDark === false" src="../assets/arctic/rank/rank-light.svg" alt="">
-          <h3>{{ rankMediaRounded }}</h3>
-          <h2>{{ $t('rankAverage') }}</h2>
-        </div>
-        
-        <div class="media__item">
-          <img v-show="isDark === true" src="../assets/arctic/extent/extent-dark.svg" alt="">
-          <img v-show="isDark === false" src="../assets/arctic/extent/extent-light.svg" alt="">
-          <h3>{{ extentMediaRounded }}</h3>
-          <h2>{{ $t('extentAverage') }}</h2>
-        </div>
-        
-        <div class="media__item">
-          <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
-          <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
-          <h3>{{ lastYear }}</h3>
-          <h2>{{ $t('latestData') }}</h2>
+        <div class="title__container">
+          <h1>{{ $t('arctic') }}</h1>
         </div>
 
-      </div>
+        <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" :type="chartType" :animation="chartAnimation" />
+
+        <div class="media__container">
+
+          <div class="media__item">
+            <img v-show="isDark === true" src="../assets/arctic/area/area-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/arctic/area/area-light.svg" alt="">
+            <h3>{{ areaMediaRounded }}</h3>
+            <h2>{{ $t('areaAverage') }}</h2>
+          </div>
+          
+          <div class="media__item">
+            <img v-show="isDark === true" src="../assets/arctic/rank/rank-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/arctic/rank/rank-light.svg" alt="">
+            <h3>{{ rankMediaRounded }}</h3>
+            <h2>{{ $t('rankAverage') }}</h2>
+          </div>
+          
+          <div class="media__item">
+            <img v-show="isDark === true" src="../assets/arctic/extent/extent-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/arctic/extent/extent-light.svg" alt="">
+            <h3>{{ extentMediaRounded }}</h3>
+            <h2>{{ $t('extentAverage') }}</h2>
+          </div>
+          
+          <div class="media__item">
+            <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
+            <h3>{{ lastYear }}</h3>
+            <h2>{{ $t('latestData') }}</h2>
+          </div>
+
+        </div>
+        </div>
+
+        <Footer></Footer>
     </div>
-    
-    <Footer></Footer>   
+       
 
 </template>
 
