@@ -39,9 +39,9 @@
           </div>
 
         </div>
-        </div>
+      </div>
 
-        <Footer></Footer>
+      <Footer></Footer>
     </div>
        
 
@@ -51,6 +51,7 @@
 
 import { ref, onMounted } from 'vue';
 import { arcticData } from '../API';
+import { averageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 import Footer from '../components/Footer.vue';
 
@@ -138,7 +139,7 @@ const isDark = useDark()
         borderColor: '#FFA500',
       },
     ];
-
+    
     areaMedia.value = totalArea/counterData
     areaMediaRounded = parseFloat(areaMedia.value.toFixed(2))
 
@@ -214,27 +215,73 @@ const isDark = useDark()
     }
   }
 
+  @media screen and (min-width: 911px) and (max-width: 1199px){
+    
+  }
+
   @media screen and (max-width: 910px) {
     .arctic__container {
 
       .media__container {
-        display: block;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
 
-      .media__item{ 
-        padding: 10px;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 20px; 
-      }
+        .media__item{ 
+          padding: 10px;
+          margin: 20px;
 
-      .media__item:first-child{
-        margin-left: 20px;
-      }
+          img{
+            width: 50px;
+          }
 
-      .media__item:nth-last-child(1){
-        margin-right: 20px;
+          h3{
+            font-size: 20px;
+          }
+
+          h2{
+            font-size: 14px;
+          }
+        }
+
+        .media__item:first-child{
+          margin-left: 20px;
+        }
+
+        .media__item:nth-last-child(1){
+          margin-right: 20px;
+        }
       }
-      }
+    }
+  } 
+
+  @media screen and (max-width: 500px) {
+  
+    .arctic__container{
+
+      .media__container{
+        grid-template-columns: repeat(2, 1fr);
+
+        .media__item{
+          padding: 10px;
+          margin: 10px;
+
+          img{
+            width: 50px;
+          }
+
+          h3{
+            font-size: 22px;
+          }
+        }
+        
+        .media__item:first-child{
+            margin-left: 10px;
+        }
+
+        .media__item:nth-last-child(1){
+            margin-right: 10px;
+        }  
+      }   
     }
   }
 

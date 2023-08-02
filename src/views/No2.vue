@@ -11,7 +11,6 @@
 
 import { ref, onMounted } from 'vue';
 import { no2Data } from '../API';
-import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
   const averageData = ref([]);

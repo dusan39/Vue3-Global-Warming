@@ -67,7 +67,11 @@ import Chart from 'chart.js/auto';
   }
 
   @media screen and (max-width: 910px) {
-    
+    .chart__container{
+      border-radius: 25px;
+      padding: 15px;
+      margin: 3%;
+    }
   }
 
   @media (max-width: 390px){

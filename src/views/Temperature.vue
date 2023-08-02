@@ -11,7 +11,6 @@
 
 import { ref, onMounted } from 'vue';
 import { temperatureData } from '../API';
-import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
   const landData = ref([]);

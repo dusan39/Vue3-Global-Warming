@@ -11,7 +11,6 @@
 
 import { ref, onMounted } from 'vue';
 import { co2Data } from '../API';
-import Navabr from '../components/Navbar.vue'
 import Chart from '../components/Chart.vue';
 
   const cycleData = ref([]);
@@ -27,6 +26,8 @@ import Chart from '../components/Chart.vue';
 
   async function loadCo2API () {
     const { co2API } = await co2Data();
+
+    console.log(co2API)
 
     co2API.forEach(obj => {
       const fullDate = obj.day + '/' + obj.month + '/' + obj.year;
