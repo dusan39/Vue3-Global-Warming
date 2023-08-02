@@ -14,5 +14,7 @@
   "areaAverage": "Media dell'area",
   "rankAverage": "Media del rango",
   "extentAverage": "Media dell'estensione",
-  "latestData": "Dati più recenti"
+  "latestData": "Dati più recenti",
+  "cycleAverage": "Media dei cicli",
+  "trendAverage": "Media della tendenza"
 }

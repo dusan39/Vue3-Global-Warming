@@ -70,7 +70,7 @@ import Chart from 'chart.js/auto';
     .chart__container{
       border-radius: 25px;
       padding: 15px;
-      margin: 3%;
+      margin: 15px;
     }
   }
 
@@ -78,7 +78,7 @@ import Chart from 'chart.js/auto';
     .chart__container{
       border-radius: 20px;
       padding: 10px;
-      margin: 2%;
+      margin: 10px;
     }
   }
 

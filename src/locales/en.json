@@ -14,5 +14,7 @@
   "areaAverage": "Area average",
   "rankAverage": "Rank average",
   "extentAverage": "Extent average",
-  "latestData": "Latest data"
+  "latestData": "Latest data",
+  "cycleAverage": "Cycle average",
+  "trendAverage": "Trend average"
 }

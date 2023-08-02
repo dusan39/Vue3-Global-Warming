@@ -1,17 +1,20 @@
 <template>
 
   <Navbar></Navbar> 
-
+  
   <RouterView v-slot="{ Component }">
     <Transition name="page-slide" mode="out-in">
       <component :is="Component" />
     </Transition>
   </RouterView>
+
+  <Footer></Footer>
   
 </template>
 
 <script setup>
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
 
 </script>
 
