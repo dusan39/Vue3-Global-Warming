@@ -47,10 +47,10 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
+import { useDark } from '@vueuse/core';
 import { arcticData } from '../API';
 import { averageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
-import { useDark } from '@vueuse/core';
 
   const isDark = useDark()
 

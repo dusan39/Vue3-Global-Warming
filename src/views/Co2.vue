@@ -9,6 +9,11 @@
       <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="co2Chart" :type="chartType" :animation="chartAnimation" />
 
       <div class="data__container">
+        <div class="description__container">
+          <h2>Co2 information</h2>
+          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Carbon dioxide in the atmosphere warms the planet, causing climate change. Human activities have raised the atmosphere's carbon dioxide content by 50% in less than 200 years.</p>
+        </div>
+
         <div class="average__container">
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/co2/cycle/cycle-dark.svg" alt="">
@@ -20,20 +25,16 @@
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/co2/trend/trend-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/co2/trend/trend-light.svg" alt="">
-            <h2>{{ trendAverageRounded }}</h2>
+            <h3>{{ trendAverageRounded }}</h3>
             <h2>{{ $t('trendAverage') }}</h2>
           </div>
           
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
-            <h2>{{ lastYear }}</h2>
+            <h3>{{ lastYear }}</h3>
             <h2>{{ $t('latestData') }}</h2>
           </div>
-        </div>
-
-        <div class="description__container">
-
         </div>
       </div>
     </div>
@@ -44,9 +45,9 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
+import { useDark } from '@vueuse/core';
 import { co2Data } from '../API';
 import Chart from '../components/Chart.vue';
-import { useDark } from '@vueuse/core';
 
   const isDark = useDark()
 
@@ -65,6 +66,7 @@ import { useDark } from '@vueuse/core';
   let cycleAverageRounded = ref();
   let trendAverage = ref();
   let trendAverageRounded = ref();
+  let firstYear = ref();
   let lastYear = ref();
   
   let dataLoaded = ref(false);
@@ -74,13 +76,11 @@ import { useDark } from '@vueuse/core';
     let totalCycle = 0;
     let totalTrend = 0;
 
-    console.log(co2API)
-
     co2API.forEach((obj, index, array) => {
       const parsedCycle = parseFloat(obj.cycle);
       const parsedTrend = parseFloat(obj.trend);
 
-      const fullDate = obj.day + '/' + obj.month + '/' + obj.year;
+      const fullDate = obj.month + '/' + obj.year;
       chartLabels.value.push(fullDate);
       cycleData.value.push(obj.cycle)
       trendData.value.push(obj.trend);
@@ -93,6 +93,10 @@ import { useDark } from '@vueuse/core';
 
       if (!isNaN(parsedTrend)) {
         totalTrend += parsedTrend;
+      }
+
+      if (index === 0) {
+        firstYear = obj.year 
       }
 
       if (index === array.length - 1) {
@@ -148,6 +152,19 @@ import { useDark } from '@vueuse/core';
 
     .data__container{
 
+      .description__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        text-align: center;
+
+        h2{
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+
       .average__container{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -169,8 +186,65 @@ import { useDark } from '@vueuse/core';
           img{
             width: 80px;
           }
+
+          h3{
+            font-weight: bold;
+          }
         }
       }
+    }
+  }
+
+  @media screen and (min-width: 911px) and (max-width: 1200px){
+    div{
+      .co2__container{
+        width: auto;
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+  
+    .co2__container{
+
+      .data__container{
+
+        .description__container{
+          margin: 10px;
+        }
+
+        .average__container{
+          grid-template-columns: repeat(2, 1fr);
+
+        .average__item{
+          padding: 10px;
+          margin: 10px;
+
+            img{
+              width: 40px;
+            }
+
+            h3{
+              font-size: 20px;
+            }
+
+            h2{
+              font-size: 18px;
+            }
+          } 
+        
+          .average__item:first-child{
+              margin-left: 10px;
+          }
+
+          .average__item:nth-last-child(1){
+            grid-column: 1 / 3;
+            margin-right: 10px;
+          }  
+        }
+      }      
     }
   }
 

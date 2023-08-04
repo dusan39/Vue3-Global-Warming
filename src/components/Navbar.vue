@@ -94,7 +94,7 @@ const locale = ref('it');
     height: 100vh;
     height: 0vh;
     overflow: hidden;
-    transition: all 1s cubic-bezier(.215, .61, .355, 1);
+    transition: all .5s cubic-bezier(.215, .61, .355, 1);
     z-index: 99999;
   }
   .header__logo{padding: 10px 20px; margin: 0px; align-self: center;}
