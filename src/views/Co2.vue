@@ -49,7 +49,7 @@ import { useDark } from '@vueuse/core';
 import { co2Data } from '../API';
 import Chart from '../components/Chart.vue';
 
-  const isDark = useDark()
+  const isDark = useDark();
 
   const cycleData = ref([]);
   const trendData = ref([]);

@@ -10,8 +10,10 @@
 
       <div class="data__container">
         <div class="desctiption__container">
-          <h2></h2>
-          <p></p>
+          <div class="description__container">
+          <h2>Methane information</h2>
+          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Methane is the primary contributor to the formation of ground-level ozone, a hazardous air pollutant and greenhouse gas, exposure to which causes 1 million premature deaths every year.</p>
+        </div>
         </div>
 
         <div class="average__container">
@@ -54,6 +56,7 @@ import Chart from '../components/Chart.vue';
 
   let trendAverage = ref();
   let trendAverageRounded = ref();
+  let firstYear = ref();
   let lastYear = ref();
 
   const chartType = ref();
@@ -64,7 +67,6 @@ import Chart from '../components/Chart.vue';
   async function loadMethaneAPI () {
     const { methaneAPI } = await methaneData();
     let totalTrend = 0;
-    console.log(methaneAPI)
 
     methaneAPI.forEach((obj, index, array) => {
       const parsedTrend = parseFloat(obj.trend);
@@ -79,6 +81,10 @@ import Chart from '../components/Chart.vue';
 
       if (!isNaN(parsedTrend)) {
         totalTrend += parsedTrend;
+      }
+
+      if (index === 1) {
+        firstYear = obj.date 
       }
 
       if (index === array.length - 1) {
@@ -132,12 +138,15 @@ import Chart from '../components/Chart.vue';
     .data__container{
 
       .description__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        text-align: center;
+
         h2{
-
-        }
-
-        p{
-
+          font-size: 24px;
+          font-weight: bold;
         }
       }
 

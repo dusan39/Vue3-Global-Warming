@@ -1,8 +1,43 @@
 <template>
 
   <div>
-    <h1>{{ $t('temperature') }}</h1>
-    <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" :type="chartType" :animation="chartAnimation" />
+    <div class="temperature__container">
+      <div class="title__container">
+        <h1>{{ $t('temperature') }}</h1>
+      </div>
+      
+      <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="temperatureChart" :type="chartType" :animation="chartAnimation" />
+
+      <div class="data__container">
+        <div class="description__container">
+          <h2>Co2 information</h2>
+          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Sunlight and high temps also encourage chemical reactions in pollutants and increase smog.</p>
+        </div>
+
+        <div class="average__container">
+          <div class="average__item">
+            <img v-show="isDark === true" src="../assets/co2/cycle/cycle-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/co2/cycle/cycle-light.svg" alt="">
+            <h3>{{ landAverageRounded }}</h3>
+            <h2>Land</h2>
+          </div>
+          
+          <div class="average__item">
+            <img v-show="isDark === true" src="../assets/co2/trend/trend-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/co2/trend/trend-light.svg" alt="">
+            <h3>{{ stationAverageRounded }}</h3>
+            <h2>Station</h2>
+          </div>
+          
+          <div class="average__item">
+            <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
+            <h3>{{ lastYear }}</h3>
+            <h2>{{ $t('latestData') }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>   
   </div>   
 
 </template>
@@ -10,8 +45,11 @@
 <script setup>
 
 import { ref, onMounted } from 'vue';
+import { useDark } from '@vueuse/core';
 import { temperatureData } from '../API';
 import Chart from '../components/Chart.vue';
+
+  const isDark = useDark();
 
   const landData = ref([]);
   const stationData = ref([]);
@@ -21,16 +59,49 @@ import Chart from '../components/Chart.vue';
 
   const chartType = ref();
   const chartAnimation = ref();
+
+  let counterData = 0;
+
+  let landAverage = ref();
+  let landAverageRounded = ref();
+  let stationAverage = ref();
+  let stationAverageRounded = ref();
+  let firstYear = ref();
+  let lastYear = ref();
   
   let dataLoaded = ref(false);
 
   async function loadTemperatureAPI () {
     const { temperatureAPI } = await temperatureData();
+    let totalLand = 0;
+    let totalStation = 0;
+    console.log(temperatureAPI)
 
-    temperatureAPI.forEach(obj => {
+    temperatureAPI.forEach((obj, index, array) => {
+      const parsedLand = parseFloat(obj.land);
+      const parsedStation = parseFloat(obj.station);
+
       chartLabels.value.push(obj.time);
       landData.value.push(obj.land);
       stationData.value.push(obj.station);
+
+      counterData++;
+
+      if (!isNaN(parsedLand)) {
+        totalLand += parsedLand;
+      }
+
+      if (!isNaN(parsedStation)) {
+        totalStation += parsedStation;
+      }
+
+      if (index === 0) {
+        firstYear = obj.time
+      }
+
+      if (index === array.length - 1) {
+        lastYear = obj.time
+      }
     });
 
     const datasets = [
@@ -50,6 +121,12 @@ import Chart from '../components/Chart.vue';
       }
     ];
 
+    landAverage.value = totalLand/counterData
+    landAverageRounded = parseFloat(landAverage.value.toFixed(2))
+
+    stationAverage.value = totalStation/counterData
+    stationAverageRounded = parseFloat(stationAverage.value.toFixed(2))
+
     chartType.value = 'line'
     chartAnimation.value = true
       
@@ -62,5 +139,113 @@ import Chart from '../components/Chart.vue';
 </script>
 
 <style lang="scss">
+
+.temperature__container{
+    max-width: 1200px; width: 100%;
+    margin: 0 auto;
+
+    .title__container{
+      display: flex;
+      justify-content: center;
+      padding-bottom: 2%;
+    }
+
+    .data__container{
+
+      .description__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        text-align: center;
+
+        h2{
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+
+      .average__container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        
+        .average__item{
+          border-radius: 30px;
+          padding: 30px;
+          margin-top: 20px;
+          margin-right: 10px;
+          margin-left: 10px;
+          background: rgba(255, 255, 255, .1);
+          box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+          border: 2px solid rgba(255, 255, 255, .5);
+          backdrop-filter: blur(15px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          img{
+            width: 80px;
+          }
+
+          h3{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 911px) and (max-width: 1200px){
+    div{
+      .temperature__container{
+        width: auto;
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+  
+    .temperature__container{
+
+      .data__container{
+
+        .description__container{
+          margin: 10px;
+        }
+
+        .average__container{
+          grid-template-columns: repeat(2, 1fr);
+
+        .average__item{
+          padding: 10px;
+          margin: 10px;
+
+            img{
+              width: 40px;
+            }
+
+            h3{
+              font-size: 20px;
+            }
+
+            h2{
+              font-size: 18px;
+            }
+          } 
+        
+          .average__item:first-child{
+              margin-left: 10px;
+          }
+
+          .average__item:nth-last-child(1){
+            grid-column: 1 / 3;
+            margin-right: 10px;
+          }  
+        }
+      }      
+    }
+  }
 
 </style>
