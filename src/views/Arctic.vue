@@ -1,46 +1,51 @@
 <template>
     <div>
       <div class="arctic__container">
-
         <div class="title__container">
           <h1>{{ $t('arctic') }}</h1>
         </div>
 
         <Chart v-if="dataLoaded" :labels="chartLabels" :datasets="chartDatasets" canvasId="arcticChart" :type="chartType" :animation="chartAnimation" />
 
-        <div class="average__container">
-
-          <div class="average__item">
-            <img v-show="isDark === true" src="../assets/arctic/area/area-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/arctic/area/area-light.svg" alt="">
-            <h3>{{ areaAverageRounded }}</h3>
-            <h2>{{ $t('areaAverage') }}</h2>
-          </div>
-          
-          <div class="average__item">
-            <img v-show="isDark === true" src="../assets/arctic/rank/rank-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/arctic/rank/rank-light.svg" alt="">
-            <h3>{{ rankAverageRounded }}</h3>
-            <h2>{{ $t('rankAverage') }}</h2>
-          </div>
-          
-          <div class="average__item">
-            <img v-show="isDark === true" src="../assets/arctic/extent/extent-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/arctic/extent/extent-light.svg" alt="">
-            <h3>{{ extentAverageRounded }}</h3>
-            <h2>{{ $t('extentAverage') }}</h2>
-          </div>
-          
-          <div class="average__item">
-            <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
-            <h3>{{ lastYear }}</h3>
-            <h2>{{ $t('latestData') }}</h2>
+        <div class="data__container">
+          <div class="description__container">
+            <h2>{{ $t('arcticTitle') }}</h2>
+            <p>
+              {{ $t('chartInfo') }} <b>{{ firstYear }}</b> {{ $t('to') }} <b>{{ lastYear }}</b>. <br> {{$t('arcticInfo') }}
+            </p>
           </div>
 
+          <div class="average__container">
+            <div class="average__item">
+              <img v-show="isDark === true" src="../assets/arctic/area/area-dark.svg" alt="">
+              <img v-show="isDark === false" src="../assets/arctic/area/area-light.svg" alt="">
+              <h3>{{ areaAverageRounded }}</h3>
+              <h2>{{ $t('areaAverage') }}</h2>
+            </div>
+            
+            <div class="average__item">
+              <img v-show="isDark === true" src="../assets/arctic/rank/rank-dark.svg" alt="">
+              <img v-show="isDark === false" src="../assets/arctic/rank/rank-light.svg" alt="">
+              <h3>{{ rankAverageRounded }}</h3>
+              <h2>{{ $t('rankAverage') }}</h2>
+            </div>
+            
+            <div class="average__item">
+              <img v-show="isDark === true" src="../assets/arctic/extent/extent-dark.svg" alt="">
+              <img v-show="isDark === false" src="../assets/arctic/extent/extent-light.svg" alt="">
+              <h3>{{ extentAverageRounded }}</h3>
+              <h2>{{ $t('extentAverage') }}</h2>
+            </div>
+            
+            <div class="average__item">
+              <img v-show="isDark === true" src="../assets/arctic/calendar/calendar-dark.svg" alt="">
+              <img v-show="isDark === false" src="../assets/arctic/calendar/calendar-light.svg" alt="">
+              <h3>{{ lastYear }}</h3>
+              <h2>{{ $t('latestData') }}</h2>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
 </template>
 
@@ -72,6 +77,7 @@ import Chart from '../components/Chart.vue';
   let rankAverageRounded = ref();
   let extentAverage = ref();
   let extentAverageRounded = ref();
+  let firstYear = ref();
   let lastYear = ref();
   
   let dataLoaded = ref(false);
@@ -84,7 +90,6 @@ import Chart from '../components/Chart.vue';
   
     arcticAPI.forEach((obj, index, array) => {
       const parsedArea = parseFloat(obj.area);
-      console.log(parsedArea)
       const parsedRank = parseFloat(obj.rank);
       const parsedExtent = parseFloat(obj.extent);
 
@@ -106,6 +111,10 @@ import Chart from '../components/Chart.vue';
 
       if (!isNaN(parsedExtent)) {
         totalExtent += parsedExtent;
+      }
+
+      if (index === 0) {
+        firstYear = obj.year 
       }
 
       if (index === array.length - 1) {
@@ -169,45 +178,61 @@ import Chart from '../components/Chart.vue';
       padding-bottom: 2%;
     }
 
-    .average__container{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .data__container{
 
-      .average__item{
-        border-radius: 30px;
-        padding: 30px;
-        margin-top: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        background: rgba(255, 255, 255, .1);
-        box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
-        border: 2px solid rgba(255, 255, 255, .5);
-        backdrop-filter: blur(15px);
+      .description__container{
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        img{
-          width: 80px;
-        }
-
-        h3{
-          font-size: 26px;
-          font-weight: bold;
-          text-align: center;
-        }
+        margin-top: 20px;
+        text-align: center;
 
         h2{
-          text-align: center;
+          font-size: 28px;
+          font-weight: bold;
         }
       }
 
-      .average__item:first-child{
-        margin-left: 0px;
-      }
+      .average__container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
 
-      .average__item:nth-last-child(1){
-        margin-right: 0px;
+        .average__item{
+          border-radius: 30px;
+          padding: 30px;
+          margin-top: 20px;
+          margin-right: 10px;
+          margin-left: 10px;
+          background: rgba(255, 255, 255, .1);
+          box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+          border: 2px solid rgba(255, 255, 255, .5);
+          backdrop-filter: blur(15px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          img{
+            width: 80px;
+          }
+
+          h3{
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+          }
+
+          h2{
+            text-align: center;
+          }
+        }
+
+        .average__item:first-child{
+          margin-left: 0px;
+        }
+
+        .average__item:nth-last-child(1){
+          margin-right: 0px;
+        }
       }
     }
   }
@@ -257,34 +282,79 @@ import Chart from '../components/Chart.vue';
     }
   } 
 
+  @media screen and (min-width: 911px) and (max-width: 1200px){
+    div{
+      .arctic__container{
+        width: auto;
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 677px) and (max-width: 911px) {
+  
+    .arctic__container{
+
+      .data__container{
+
+        .average__container{
+
+          .average__item{
+            margin: 15px;
+          }
+
+          .average__item:first-child{
+              margin-left: 15px;
+          }
+
+          .average__item:nth-last-child(1){
+            margin-right: 15px;
+          }  
+        }
+      }      
+    }
+  }
+
   @media screen and (max-width: 677px) {
   
     .arctic__container{
 
-      .average__container{
-        grid-template-columns: repeat(2, 1fr);
+      .data__container{
+
+        .description__container{
+          margin: 10px;
+        }
+
+        .average__container{
+          grid-template-columns: repeat(2, 1fr);
 
         .average__item{
           padding: 10px;
           margin: 10px;
 
-          img{
-            width: 50px;
+            img{
+              width: 40px;
+            }
+
+            h3{
+              font-size: 20px;
+            }
+
+            h2{
+              font-size: 18px;
+            }
           }
 
-          h3{
-            font-size: 22px;
+          .average__item:first-child{
+              margin-left: 10px;
           }
-        }
-        
-        .average__item:first-child{
-            margin-left: 10px;
-        }
 
-        .average__item:nth-last-child(1){
+          .average__item:nth-last-child(1){
             margin-right: 10px;
-        }  
-      }   
+          }  
+        }
+      }      
     }
   }
 

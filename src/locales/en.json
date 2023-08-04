@@ -16,5 +16,17 @@
   "extentAverage": "Extent average",
   "latestData": "Latest data",
   "cycleAverage": "Cycle average",
-  "trendAverage": "Trend average"
+  "trendAverage": "Trend average",
+  "to": " to ",
+  "arcticTitle": "Arctic information",
+  "chartInfo": "This chart rappresent the data from ",
+  "arcticInfo": "The Arctic has warmed nearly four times faster than the globe since 1979.",
+  "co2Title": "Co2 information",
+  "co2Info": "Carbon dioxide in the atmosphere warms the planet, causing climate change, human activities have raised the atmosphere's carbon dioxide content by 50% in less than 200 years.",
+  "methaneTitle": "Methane information",
+  "methaneInfo": "Methane is the primary contributor to the formation of ground-level ozone, a hazardous air pollutant and greenhouse gas, exposure to which causes 1 million premature deaths every year.",
+  "no2Title": "No2 information",
+  "no2Info": "Nitrous oxide enhances the greenhouse effect just as carbon dioxide does by capturing reradiated infrared radiation from the Earth's surface and subsequently warming the troposphere (lower atmosphere).",
+  "temperatureTitle": "Temperature information",
+  "temperatureInfo": "Sunlight and high temps also encourage chemical reactions in pollutants and increase smog."
 }

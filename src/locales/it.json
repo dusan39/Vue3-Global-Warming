@@ -16,5 +16,17 @@
   "extentAverage": "Media dell'estensione",
   "latestData": "Dati più recenti",
   "cycleAverage": "Media dei cicli",
-  "trendAverage": "Media della tendenza"
+  "trendAverage": "Media della tendenza",
+  "arcticTitle": "Informazioni sull'artico",
+  "chartInfo": "Questo grafico rappresenta i dati dal ",
+  "to": " al ",
+  "arcticInfo": "L'Artico si è riscaldato quasi quattro volte più velocemente del globo dal 1979.",
+  "co2Title": "Informazioni sul Co2",
+  "co2Info": "L'anidride carbonica nell'atmosfera riscalda il pianeta, provocando il cambiamento climatico, le attività umane hanno aumentato il contenuto di anidride carbonica nell'atmosfera del 50% in meno di 200 anni.",
+  "methaneTitle": "Informazioni sul metano",
+  "methaneInfo": "Il metano è il principale contributore alla formazione dell'ozono a livello del suolo, un pericoloso inquinante atmosferico e gas serra, la cui esposizione provoca 1 milione di morti premature ogni anno.",
+  "no2Title": "Informazioni sul No2",
+  "no2Info": "Il protossido di azoto aumenta l'effetto serra proprio come fa l'anidride carbonica catturando la radiazione infrarossa reirradiata dalla superficie terrestre e successivamente riscaldando la troposfera (atmosfera inferiore).",
+  "temperatureTitle": "Informazioni sulle temperature",
+  "temperatureInfo": "La luce solare e le alte temperature incoraggiano anche le reazioni chimiche negli inquinanti e aumentano lo smog."
 }

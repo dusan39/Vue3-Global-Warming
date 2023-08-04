@@ -11,8 +11,10 @@
       <div class="data__container">
         <div class="desctiption__container">
           <div class="description__container">
-          <h2>Methane information</h2>
-          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Methane is the primary contributor to the formation of ground-level ozone, a hazardous air pollutant and greenhouse gas, exposure to which causes 1 million premature deaths every year.</p>
+          <h2>{{ $t('no2Title') }}</h2>
+          <p>
+            {{ $t('chartInfo') }} <b>{{ firstYear }}</b> {{ $t('to') }} <b>{{ lastYear }}</b>. <br> {{ $t('no2Info') }}
+          </p>
         </div>
         </div>
 

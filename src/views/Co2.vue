@@ -10,8 +10,10 @@
 
       <div class="data__container">
         <div class="description__container">
-          <h2>Co2 information</h2>
-          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Carbon dioxide in the atmosphere warms the planet, causing climate change. Human activities have raised the atmosphere's carbon dioxide content by 50% in less than 200 years.</p>
+          <h2>{{ $t('co2Title') }}</h2>
+          <p>
+            {{ $t('chartInfo') }} <b>{{ firstYear }}</b> {{ $t('to') }} <b>{{ lastYear }}</b>. <br> {{ $t('co2Info') }}
+          </p>
         </div>
 
         <div class="average__container">

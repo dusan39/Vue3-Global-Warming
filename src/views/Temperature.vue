@@ -10,21 +10,23 @@
 
       <div class="data__container">
         <div class="description__container">
-          <h2>Co2 information</h2>
-          <p>This chart rappresent the data from <b>{{ firstYear }}</b> to <b>{{ lastYear }}</b>, Sunlight and high temps also encourage chemical reactions in pollutants and increase smog.</p>
+          <h2>{{ $t('temperatureTitle') }}</h2>
+          <p>
+            {{ $t('chartInfo') }} <b>{{ firstYear }}</b> {{ $t('to') }} <b>{{ lastYear }}</b>. <br> {{ $t('temperatureInfo') }}
+          </p>
         </div>
 
         <div class="average__container">
           <div class="average__item">
-            <img v-show="isDark === true" src="../assets/co2/cycle/cycle-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/co2/cycle/cycle-light.svg" alt="">
+            <img v-show="isDark === true" src="../assets/temperature/land/land-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/temperature/land/land-light.svg" alt="">
             <h3>{{ landAverageRounded }}</h3>
             <h2>Land</h2>
           </div>
           
           <div class="average__item">
-            <img v-show="isDark === true" src="../assets/co2/trend/trend-dark.svg" alt="">
-            <img v-show="isDark === false" src="../assets/co2/trend/trend-light.svg" alt="">
+            <img v-show="isDark === true" src="../assets/temperature/station/station-dark.svg" alt="">
+            <img v-show="isDark === false" src="../assets/temperature/station/station-light.svg" alt="">
             <h3>{{ stationAverageRounded }}</h3>
             <h2>Station</h2>
           </div>
@@ -75,7 +77,6 @@ import Chart from '../components/Chart.vue';
     const { temperatureAPI } = await temperatureData();
     let totalLand = 0;
     let totalStation = 0;
-    console.log(temperatureAPI)
 
     temperatureAPI.forEach((obj, index, array) => {
       const parsedLand = parseFloat(obj.land);
