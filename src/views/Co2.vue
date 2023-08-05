@@ -20,14 +20,14 @@
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/co2/cycle/cycle-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/co2/cycle/cycle-light.svg" alt="">
-            <h3>{{ cycleAverageRounded }}</h3>
+            <h3>{{ cycleAverage }}</h3>
             <h2>{{ $t('cycleAverage') }}</h2>
           </div>
           
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/co2/trend/trend-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/co2/trend/trend-light.svg" alt="">
-            <h3>{{ trendAverageRounded }}</h3>
+            <h3>{{ trendAverage }}</h3>
             <h2>{{ $t('trendAverage') }}</h2>
           </div>
           
@@ -49,6 +49,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { co2Data } from '../API';
+import { averageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark();
@@ -65,9 +66,7 @@ import Chart from '../components/Chart.vue';
   let counterData = 0;
 
   let cycleAverage = ref();
-  let cycleAverageRounded = ref();
   let trendAverage = ref();
-  let trendAverageRounded = ref();
   let firstYear = ref();
   let lastYear = ref();
   
@@ -123,11 +122,11 @@ import Chart from '../components/Chart.vue';
       },
     ];
 
-    cycleAverage.value = totalCycle/counterData
-    cycleAverageRounded = parseFloat(cycleAverage.value.toFixed(2))
+    cycleAverage = averageCalculator(totalCycle, counterData)
+    cycleAverage = cycleAverage.average.value
 
-    trendAverage.value = totalTrend/counterData
-    trendAverageRounded = parseFloat(trendAverage.value.toFixed(2))
+    trendAverage = averageCalculator(totalTrend, counterData)
+    trendAverage = trendAverage.average.value
 
     chartType.value = 'line'
     chartAnimation.value = false

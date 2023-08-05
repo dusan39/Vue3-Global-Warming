@@ -19,21 +19,21 @@
             <div class="average__item">
               <img v-show="isDark === true" src="../assets/arctic/area/area-dark.svg" alt="">
               <img v-show="isDark === false" src="../assets/arctic/area/area-light.svg" alt="">
-              <h3>{{ areaAverageRounded }}</h3>
+              <h3>{{ areaAverage }}</h3>
               <h2>{{ $t('areaAverage') }}</h2>
             </div>
             
             <div class="average__item">
               <img v-show="isDark === true" src="../assets/arctic/rank/rank-dark.svg" alt="">
               <img v-show="isDark === false" src="../assets/arctic/rank/rank-light.svg" alt="">
-              <h3>{{ rankAverageRounded }}</h3>
+              <h3>{{ rankAverage }}</h3>
               <h2>{{ $t('rankAverage') }}</h2>
             </div>
             
             <div class="average__item">
               <img v-show="isDark === true" src="../assets/arctic/extent/extent-dark.svg" alt="">
               <img v-show="isDark === false" src="../assets/arctic/extent/extent-light.svg" alt="">
-              <h3>{{ extentAverageRounded }}</h3>
+              <h3>{{ extentAverage }}</h3>
               <h2>{{ $t('extentAverage') }}</h2>
             </div>
             
@@ -72,11 +72,8 @@ import Chart from '../components/Chart.vue';
   let counterData = 0;
 
   let areaAverage = ref();
-  let areaAverageRounded = ref();
   let rankAverage = ref();
-  let rankAverageRounded = ref();
   let extentAverage = ref();
-  let extentAverageRounded = ref();
   let firstYear = ref();
   let lastYear = ref();
   
@@ -146,14 +143,14 @@ import Chart from '../components/Chart.vue';
       },
     ];
     
-    areaAverage.value = totalArea/counterData
-    areaAverageRounded = parseFloat(areaAverage.value.toFixed(2))
+    areaAverage = averageCalculator(totalArea, counterData)
+    areaAverage = areaAverage.average.value
+    
+    rankAverage = averageCalculator(totalRank, counterData)
+    rankAverage = rankAverage.average.value
 
-    rankAverage.value = totalRank/counterData
-    rankAverageRounded = parseFloat(rankAverage.value.toFixed(2))
-
-    extentAverage.value = totalExtent/counterData
-    extentAverageRounded = parseFloat(extentAverage.value.toFixed(2))
+    extentAverage = averageCalculator(totalExtent, counterData)
+    extentAverage = extentAverage.average.value
       
     chartType.value = 'line'
     chartAnimation.value = true
@@ -233,16 +230,6 @@ import Chart from '../components/Chart.vue';
         .average__item:nth-last-child(1){
           margin-right: 0px;
         }
-      }
-    }
-  }
-
-  @media screen and (min-width: 911px) and (max-width: 1200px){
-    div{
-      .arctic__container{
-        width: auto;
-        margin-right: 20px;
-        margin-left: 20px;
       }
     }
   }

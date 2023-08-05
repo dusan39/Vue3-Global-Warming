@@ -20,15 +20,15 @@
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/temperature/land/land-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/temperature/land/land-light.svg" alt="">
-            <h3>{{ landAverageRounded }}</h3>
-            <h2>Land</h2>
+            <h3>{{ landAverage }}</h3>
+            <h2>{{ $t('averageLand') }}</h2>
           </div>
           
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/temperature/station/station-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/temperature/station/station-light.svg" alt="">
-            <h3>{{ stationAverageRounded }}</h3>
-            <h2>Station</h2>
+            <h3>{{ stationAverage }}</h3>
+            <h2>{{ $t('averageStation') }}</h2>
           </div>
           
           <div class="average__item">
@@ -49,6 +49,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { temperatureData } from '../API';
+import { averageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark();
@@ -65,9 +66,7 @@ import Chart from '../components/Chart.vue';
   let counterData = 0;
 
   let landAverage = ref();
-  let landAverageRounded = ref();
   let stationAverage = ref();
-  let stationAverageRounded = ref();
   let firstYear = ref();
   let lastYear = ref();
   
@@ -122,11 +121,11 @@ import Chart from '../components/Chart.vue';
       }
     ];
 
-    landAverage.value = totalLand/counterData
-    landAverageRounded = parseFloat(landAverage.value.toFixed(2))
-
-    stationAverage.value = totalStation/counterData
-    stationAverageRounded = parseFloat(stationAverage.value.toFixed(2))
+    landAverage = averageCalculator(totalLand, counterData)
+    landAverage = landAverage.average.value
+    
+    stationAverage = averageCalculator(totalStation, counterData)
+    stationAverage = stationAverage.average.value
 
     chartType.value = 'line'
     chartAnimation.value = true

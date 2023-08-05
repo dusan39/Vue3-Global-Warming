@@ -1,16 +1,14 @@
-import { computed, ref } from "vue";
+import { ref, computed } from "vue";
 
-export function averageCalculator(totalData, counterData){
+export function averageCalculator(total, counter){
 
-  const average = ref(0)
+  const average = ref(0);
 
   const calculateAverage = computed(() => {
-    return totalData.value / counterData.value
+    return total / counter
   });
 
-  average.value = calculateAverage.value
-
-  return{
-    average
-  }
+  average.value = parseFloat(calculateAverage.value.toFixed(2))
+  
+  return{ average }
 }

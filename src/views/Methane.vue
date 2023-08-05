@@ -22,7 +22,7 @@
           <div class="average__item">
             <img v-show="isDark === true" src="../assets/co2/trend/trend-dark.svg" alt="">
             <img v-show="isDark === false" src="../assets/co2/trend/trend-light.svg" alt="">
-            <h3>{{ trendAverageRounded }}</h3>
+            <h3>{{ trendAverage }}</h3>
             <h2>{{ $t('trendAverage') }}</h2>
           </div>
 
@@ -44,6 +44,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { methaneData } from '../API';
+import { averageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark()
@@ -57,7 +58,6 @@ import Chart from '../components/Chart.vue';
   let counterData = 0;
 
   let trendAverage = ref();
-  let trendAverageRounded = ref();
   let firstYear = ref();
   let lastYear = ref();
 
@@ -111,8 +111,8 @@ import Chart from '../components/Chart.vue';
       },
     ];
 
-    trendAverage.value = totalTrend/counterData
-    trendAverageRounded = parseFloat(trendAverage.value.toFixed(2))
+    trendAverage = averageCalculator(totalTrend, counterData)
+    trendAverage = trendAverage.average.value
 
     chartType.value = 'line'
     chartAnimation.value = true

@@ -28,5 +28,7 @@
   "no2Title": "Informazioni sul No2",
   "no2Info": "Il protossido di azoto aumenta l'effetto serra proprio come fa l'anidride carbonica catturando la radiazione infrarossa reirradiata dalla superficie terrestre e successivamente riscaldando la troposfera (atmosfera inferiore).",
   "temperatureTitle": "Informazioni sulle temperature",
-  "temperatureInfo": "La luce solare e le alte temperature incoraggiano anche le reazioni chimiche negli inquinanti e aumentano lo smog."
+  "temperatureInfo": "La luce solare e le alte temperature incoraggiano anche le reazioni chimiche negli inquinanti e aumentano lo smog.",
+  "averageStation": "Media delle stazioni",
+  "averageLand": "Media del territorio"
 }

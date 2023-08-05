@@ -28,5 +28,7 @@
   "no2Title": "No2 information",
   "no2Info": "Nitrous oxide enhances the greenhouse effect just as carbon dioxide does by capturing reradiated infrared radiation from the Earth's surface and subsequently warming the troposphere (lower atmosphere).",
   "temperatureTitle": "Temperature information",
-  "temperatureInfo": "Sunlight and high temps also encourage chemical reactions in pollutants and increase smog."
+  "temperatureInfo": "Sunlight and high temps also encourage chemical reactions in pollutants and increase smog.",
+  "averageStation": "Station average",
+  "averageLand": "Land average"
 }
