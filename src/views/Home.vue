@@ -1,4 +1,5 @@
 <template>
+  
   <div>
     <div class="hero__container">
       <div class="title__container">
@@ -15,7 +16,6 @@
       </div>
     </div>
   </div>
-  
   
 </template>
 
