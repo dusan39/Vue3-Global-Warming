@@ -190,6 +190,10 @@ import Chart from '../components/Chart.vue';
           h3{
             font-weight: bold;
           }
+
+          h2{
+            text-align: center;
+          }
         }
       }
     }

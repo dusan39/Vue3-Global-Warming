@@ -254,6 +254,7 @@ import Chart from '../components/Chart.vue';
           }
 
           h2{
+            text-align: center;
             font-size: 14px;
           }
         }

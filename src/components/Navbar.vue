@@ -132,7 +132,7 @@ const locale = ref('en');
 
   @media (max-width: 380px){
     .header__logo h1{font-size: 24px;}
-    .icon-hamburger{height: 68px; width: 68px; margin-left: 40px; padding-top: 5px;}
+    .icon-hamburger{height: 68px; width: 68px; margin-left: 35px; padding-top: 5px;}
     .icon-hamburger span{height: 1px; width: 35px; margin-top:20px;}
   }
 
