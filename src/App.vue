@@ -1,4 +1,4 @@
-<template>
+<!--<template>
 
   <Navbar></Navbar> 
   
@@ -11,6 +11,21 @@
   <Footer></Footer>
   
 </template>
+-->
+<template>
+  <div id="app">
+    <Navbar></Navbar>
+    <div id="main-content">
+      <RouterView v-slot="{ Component }">
+        <Transition name="page-slide" mode="out-in">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
+    </div>
+    <Footer></Footer>
+  </div>
+</template>
+
 
 <script setup>
 
@@ -20,6 +35,18 @@ import Footer from './components/Footer.vue';
 </script>
 
 <style lang="scss">
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  #main-content {
+    flex: 1; 
+    overflow-y: auto;
+  }
 
   html.dark{
     color-scheme: dark;
