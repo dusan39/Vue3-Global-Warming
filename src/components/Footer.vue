@@ -21,6 +21,7 @@
   .footer__container{
     border-top: 2px solid rgba(255, 255, 255, .5);
     padding: 20px;
+    margin-top: 5%;
     width: 100%;
 
     .social__links{
