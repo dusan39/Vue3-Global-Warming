@@ -99,15 +99,15 @@ import Chart from '../components/Chart.vue';
         labels: chartLabels.value,
         data: averageData.value,
         label: 'Average',
-        backgroundColor: '#f1faee',
-        borderColor: '#f1faee',
+        backgroundColor: '#88CCF1',
+        borderColor: '#88CCF1',
       },
       {
         labels: chartLabels.value,
         data: trendData.value,
         label: 'Trend',
-        backgroundColor: '#a8dadc',
-        borderColor: '#a8dadc',
+        backgroundColor: '#2D898B',
+        borderColor: '#2D898B',
       }
     ];
 

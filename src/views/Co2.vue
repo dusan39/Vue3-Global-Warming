@@ -110,15 +110,15 @@ import Chart from '../components/Chart.vue';
         labels: chartLabels.value,
         data: cycleData.value,
         label: 'Cycle',
-        backgroundColor: '#aec3b0',
-        borderColor: '#aec3b0',
+        backgroundColor: '#485696',
+        borderColor: '#485696',
       },
       {
         labels: chartLabels.value,
         data: trendData.value,
         label: 'Trend',
-        backgroundColor: '#124559',
-        borderColor: '#124559',
+        backgroundColor: '#FC7A1E',
+        borderColor: '#FC7A1E',
       },
     ];
 
