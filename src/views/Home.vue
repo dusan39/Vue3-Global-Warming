@@ -9,7 +9,7 @@
       </div>   
       
       <div class="image__container">
-        <h2>prova prova prova 123</h2>
+        <img src="../assets/globe.svg" alt="">
       </div>
     </div>
     <div class="filler"></div>
@@ -37,6 +37,7 @@
     margin: 0 auto;
 
     .title__container{
+      padding-left: 20px;
 
       h1{
         margin-top: 3%;
@@ -48,8 +49,39 @@
     }
   }
 
+  .image__container{
+    img{
+      width: auto;
+    }
+  }
+
   .filler {
     flex: 1;
+  }
+
+  @media(min-width: 1201px){
+    .hero__container{
+
+      .title__container{
+        padding-left: 0px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 630px) {
+    .hero__container{
+      flex-direction: column;
+
+      .image__container{
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+
+        img{
+          width: 50%;
+        }
+      }
+    }
   }
 
 </style>
