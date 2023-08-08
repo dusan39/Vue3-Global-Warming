@@ -81,9 +81,9 @@ const locale = ref('en');
   .header__logo{padding: 10px 10px 10px 20px; margin: 0px; order: 1;}
   .header__logo a{margin: 0px;}
   .header__logo a img{ width: 48px; height: 48px;}
-  .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center;}
+  .header__menu{padding: 0px; margin: 0px; order: 3; align-self: center; display: flex;}
   .header__menu a{display: inline-block; opacity: 0.8; font-size: 18px; padding: 10px 20px; text-decoration: none;}
-  .header__menu .darkMode__container{display: inline-flex; cursor: pointer;}
+  .header__menu .darkMode__container{display: flex; flex-direction: row; cursor: pointer; align-items: center; justify-content: center; padding-right: 10px;}
   .header__menu .menu__language{margin-right: 20px;}
   .header__menu .menu__language img{display: inline-block;}
   .header__menu button img{width: 50px;}
@@ -93,11 +93,13 @@ const locale = ref('en');
 
   @media(min-width: 1201px){
     .header__logo{padding: 10px 10px 10px 0px;}
+    .header__menu .darkMode__container{padding-right: 0px;}
     .header__menu li:nth-child(4){padding-right: 0px !important;}
   }
 
   @media (max-width: 910px){
     .header__menu{
+      display: block;
       position: absolute;
       top: 60px;
       background-color: #1d1d1f;
