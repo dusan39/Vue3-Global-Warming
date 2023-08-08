@@ -1,17 +1,3 @@
-<!--<template>
-
-  <Navbar></Navbar> 
-  
-  <RouterView v-slot="{ Component }">
-    <Transition name="page-slide" mode="out-in">
-      <component :is="Component" />
-    </Transition>
-  </RouterView>
-
-  <Footer></Footer>
-  
-</template>
--->
 <template>
   <div id="app">
     <Navbar></Navbar>
