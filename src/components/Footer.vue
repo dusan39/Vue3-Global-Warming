@@ -6,18 +6,23 @@
       <a href="https://www.linkedin.com/in/dusan-rajkovic-23b3831b7/" target="_blank" rel="noopener"><img src="../assets/footer/linkedin.svg" alt=""></a>
       <a href="mailto:dusanrajkovic26@gmail.com"><img src="../assets/footer/gmail.svg" alt=""></a>
     </div>
+
+    <div class="year__name__container">
+      <h2>&copy; {{ date }} Dusan Rajkovic</h2>
+    </div>
   </div>
 
 </template>
 
 <script setup>
 
+  let date = new Date().getFullYear()
+
 </script>
 
 <style lang="scss">
 
   #footer__container{
-   // border-top: 2px solid rgba(255, 255, 255, .5);
     padding: 20px;
     width: 100%;
 
@@ -26,8 +31,18 @@
       justify-content: center;
 
       img{
-        width: 50px;
+        width: 40px;
         margin: 10px;
+      }
+    }
+
+    .year__name__container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h2{
+        color: lightslategray;
       }
     }
     

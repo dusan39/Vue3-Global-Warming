@@ -10,6 +10,7 @@
       
       <div class="image__container">
         <img src="../assets/globe.svg" alt="">
+        
       </div>
     </div>
     <div class="filler"></div>
