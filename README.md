@@ -16,6 +16,10 @@ Le librerie esterne di cui mi sono servito sono:
 
 > Vue router
 
+Framwork CSS:
+
+> Tailwind
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/dusan39/final-project)
 
 ## Link deploy dell'app con netlify
