@@ -70,11 +70,3 @@ export const methaneData = async() => {
     console.log(err);
   }
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-  temperatureData(),
-  co2Data(),
-  arcticData(),
-  no2Data(),
-  methaneData()
-});
