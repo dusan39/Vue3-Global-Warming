@@ -30,11 +30,8 @@ import Footer from './components/Footer.vue';
   }
 
   #main-content {
-    display: flex;
     flex: 1; 
     overflow-y: auto;
-    justify-content: center;
-    align-items: center;
   }
 
   html.dark{
