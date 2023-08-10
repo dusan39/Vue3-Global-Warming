@@ -5,7 +5,9 @@
       <div class="title__container">
         <h1>{{ $t('title') }}</h1>
 
-        <p>{{ $t('titleDescription') }}</p>
+        <p>{{ $t('titleDescription1') }}</p>
+        <p>{{ $t('titleDescription2') }}</p>
+        <p>{{ $t('titleDescription3') }}</p>
       </div>   
       
       <div class="image__container">
