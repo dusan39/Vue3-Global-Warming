@@ -41,6 +41,7 @@
 
     .title__container{
       padding-left: 20px;
+      padding-right: 20px;
 
       h1{
         margin-top: 3%;
