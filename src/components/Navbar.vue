@@ -41,7 +41,10 @@
 import i18n from '../locales/i18n';
 import DarkMode from './DarkMode.vue';
 import { useDark, useToggle } from '@vueuse/core';
+import router from '../router/index';
 import { ref } from 'vue';
+import { useI18n } from "vue-i18n";
+const i18n_translate = useI18n();
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -49,7 +52,10 @@ const locale = ref('en');
 
   function changeLocale(newLocale) {
     locale.value = newLocale;
-    i18n.global.locale = newLocale;
+    i18n.global.locale.value = newLocale;
+    
+    if (router.currentRoute.value?.meta?.title)
+      document.title = i18n_translate.t(router.currentRoute.value.meta.title);
   }
 
   document.addEventListener('DOMContentLoaded', () => {

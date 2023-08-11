@@ -17,6 +17,15 @@
 
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
+import router from './router/index'
+import { useI18n } from "vue-i18n";
+const i18n = useI18n();
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title)
+    document.title = i18n.t(to.meta.title);
+  next();
+})
 
 </script>
 

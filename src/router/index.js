@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import i18n from '../locales/i18n';
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -7,7 +8,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'Global warming'
+      title: 'metaTitle'
     }
   },
   {
@@ -15,7 +16,7 @@ const routes = [
     name: 'Arctic',
     component: () => import('../views/Arctic.vue'),
     meta: {
-      title: 'Arctic'
+      title: 'arctic'
     }
   },
   {
@@ -23,7 +24,7 @@ const routes = [
     name: 'Co2',
     component: () => import('../views/Co2.vue'),
     meta: {
-      title: 'Co2'
+      title: 'co2'
     }
   },
   {
@@ -31,7 +32,7 @@ const routes = [
     name: 'Methane',
     component: () => import('../views/Methane.vue'),
     meta: {
-      title: 'Methane'
+      title: 'methane'
     }
   },
   {
@@ -39,7 +40,7 @@ const routes = [
     name: 'No2',
     component: () => import('../views/No2.vue'),
     meta: {
-      title: 'No2'
+      title: 'no2'
     }
   },
   {
@@ -47,7 +48,7 @@ const routes = [
     name: 'Temperature',
     component: () => import('../views/Temperature.vue'),
     meta: {
-      title: 'Temperature'
+      title: 'temperature'
     }
   }
 ]
@@ -56,10 +57,5 @@ const router = createRouter({
   history: createWebHistory('/'),
   routes
 });
-
-router.beforeEach((to, from, next) =>{
-  document.title = `${to.meta.title}`;
-  next();
-})
 
 export default router
