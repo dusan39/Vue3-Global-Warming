@@ -11,7 +11,7 @@
       <div class="data__container">
         <div class="desctiption__container">
           <div class="description__container">
-          <h2>Methane information</h2>
+          <h2>{{ $t('methaneTitle') }}</h2>
           <p>
             {{ $t('chartInfo') }} <b>{{ firstYear }}</b> {{ $t('to') }} <b>{{ lastYear }}</b>. <br> {{ $t('methaneInfo') }}
           </p>
