@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-//import i18n from '../locales/i18n';
 import Home from '../views/Home.vue'
 
 const routes = [
