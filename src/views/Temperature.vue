@@ -49,7 +49,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { temperatureData } from '../API';
-import { averageCalculator } from '../composables/average';
+import { useAverageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark();
@@ -121,10 +121,10 @@ import Chart from '../components/Chart.vue';
       }
     ];
 
-    landAverage = averageCalculator(totalLand, counterData)
+    landAverage = useAverageCalculator(totalLand, counterData)
     landAverage = landAverage.average.value
     
-    stationAverage = averageCalculator(totalStation, counterData)
+    stationAverage = useAverageCalculator(totalStation, counterData)
     stationAverage = stationAverage.average.value
 
     chartType.value = 'line'

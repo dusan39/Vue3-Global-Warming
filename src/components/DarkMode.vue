@@ -14,7 +14,7 @@ const toggleDark = useToggle(isDark);
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
   img{
     width: 30px;

@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 
-export function averageCalculator(total, counter){
+export function useAverageCalculator(total, counter){
 
   const average = ref(0);
 

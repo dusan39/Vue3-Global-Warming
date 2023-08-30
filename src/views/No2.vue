@@ -44,7 +44,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { no2Data } from '../API';
-import { averageCalculator } from '../composables/average';
+import { useAverageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark()
@@ -111,7 +111,7 @@ import Chart from '../components/Chart.vue';
       }
     ];
 
-    trendAverage = averageCalculator(totalTrend, counterData)
+    trendAverage = useAverageCalculator(totalTrend, counterData)
     trendAverage = trendAverage.average.value
 
     chartType.value = 'line'

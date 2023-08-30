@@ -54,7 +54,7 @@
 import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import { arcticData } from '../API';
-import { averageCalculator } from '../composables/average';
+import { useAverageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
   const isDark = useDark()
@@ -143,13 +143,13 @@ import Chart from '../components/Chart.vue';
       },
     ];
     
-    areaAverage = averageCalculator(totalArea, counterData)
+    areaAverage = useAverageCalculator(totalArea, counterData)
     areaAverage = areaAverage.average.value
     
-    rankAverage = averageCalculator(totalRank, counterData)
+    rankAverage = useAverageCalculator(totalRank, counterData)
     rankAverage = rankAverage.average.value
 
-    extentAverage = averageCalculator(totalExtent, counterData)
+    extentAverage = useAverageCalculator(totalExtent, counterData)
     extentAverage = extentAverage.average.value
       
     chartType.value = 'line'

@@ -1,7 +1,7 @@
 <template>
 
   <div class="chart__container">
-    <canvas :id="props.canvasId"></canvas>
+    <canvas ref="canvasRef"></canvas>
   </div>
   
 </template>
@@ -34,10 +34,11 @@ import Chart from 'chart.js/auto';
     }
   });
 
+  const canvasRef = ref(null);
   const chart = ref(null);
 
   const createChart = async () => {
-    const ctx = document.getElementById(props.canvasId);
+    const ctx = canvasRef.value.getContext('2d');
     const config = {
       type: props.type,
       data: {
@@ -55,7 +56,7 @@ import Chart from 'chart.js/auto';
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
   .chart__container{
     border-radius: 50px;

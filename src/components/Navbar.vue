@@ -6,7 +6,7 @@
         <div class="header__logo">
           <routerLink to="/"><img  src="../assets/logo.svg" alt="global-warming"/></routerLink>
         </div>
-        <ul class="header__menu" >
+        <ul class="header__menu" @click="toggleMenu">
           <routerLink :to="{ name: 'Home' }">{{ $t('home') }}</routerLink>
           <routerLink :to="{ name: 'Arctic' }">{{ $t('arctic') }}</routerLink>
           <routerLink :to="{ name: 'Co2' }">{{ $t('co2') }}</routerLink>
@@ -26,7 +26,7 @@
           <div class="darkMode__container__mobile">
             <DarkMode></DarkMode>
           </div> 
-          <div class="icon-hamburger">
+          <div class="icon-hamburger" @click="toggleMenu">
             <span></span>
             <span></span>
           </div>
@@ -41,11 +41,12 @@
 import i18n from '../locales/i18n';
 import DarkMode from './DarkMode.vue';
 import router from '../router/index';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useI18n } from "vue-i18n";
 const i18n_translate = useI18n();
 
 const locale = ref('en');
+const isMenuOpen = ref(false);
 
   function changeLocale(newLocale) {
     locale.value = newLocale;
@@ -55,24 +56,21 @@ const locale = ref('en');
       document.title = i18n_translate.t(router.currentRoute.value.meta.title);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    let item = document.querySelector('.icon-hamburger');
-    let menu = document.querySelector('.header__menu');
+  const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value;
+  };
 
-    item.addEventListener('click', function () {
+  watch(isMenuOpen, () => {
+    if (isMenuOpen.value) {
       document.body.classList.toggle('menu-open');
-    });
-
-    menu.addEventListener('click', function (event) {
-      if (event.target.tagName === 'A') {
-        document.body.classList.toggle('menu-open');
-      }
-    });
+    }else{
+      document.body.classList.toggle('menu-open');
+    }
   });
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
  
   .header{
     top: 0;
