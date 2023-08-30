@@ -7,12 +7,7 @@
           <routerLink to="/"><img  src="../assets/logo.svg" alt="global-warming"/></routerLink>
         </div>
         <ul class="header__menu" @click="toggleMenu">
-          <routerLink :to="{ name: 'Home' }">{{ $t('home') }}</routerLink>
-          <routerLink :to="{ name: 'Arctic' }">{{ $t('arctic') }}</routerLink>
-          <routerLink :to="{ name: 'Co2' }">{{ $t('co2') }}</routerLink>
-          <routerLink :to="{ name: 'Methane' }">{{ $t('methane') }}</routerLink>
-          <routerLink :to="{ name: 'No2' }">{{ $t('no2') }}</routerLink>
-          <routerLink :to="{ name: 'Temperature' }">{{ $t('temperature') }}</routerLink>
+          <router-link v-for="link in routerLinks" :key="link.name" :to="link.to">{{ $t(link.textKey) }}</router-link>
           <button class="menu__language" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/united-kingdom.svg" alt=""> </button>
           <button class="menu__language" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/italy.svg" alt=""> </button>
           <div class="darkMode__container">
@@ -43,10 +38,19 @@ import DarkMode from './DarkMode.vue';
 import router from '../router/index';
 import { ref, watch } from 'vue';
 import { useI18n } from "vue-i18n";
-const i18n_translate = useI18n();
 
+const i18n_translate = useI18n();
 const locale = ref('en');
 const isMenuOpen = ref(false);
+
+const routerLinks = [
+  { name: 'Home', textKey: 'home', to: { name: 'Home' } },
+  { name: 'Arctic', textKey: 'arctic', to: { name: 'Arctic' } },
+  { name: 'Co2', textKey: 'co2', to: { name: 'Co2' } },
+  { name: 'Methane', textKey: 'methane', to: { name: 'Methane' } },
+  { name: 'No2', textKey: 'no2', to: { name: 'No2' } },
+  { name: 'Temperature', textKey: 'temperature', to: { name: 'Temperature' } }
+];
 
   function changeLocale(newLocale) {
     locale.value = newLocale;
