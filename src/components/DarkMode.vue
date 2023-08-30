@@ -1,8 +1,8 @@
 <template>
 
-  <img id="dark__mode" src="../assets/navbar/sun.svg" v-show="isDark === true" @click="toggleDark()" alt="">
-  <img id="dark__mode__desktop" src="../assets/navbar/moon.svg" v-show="isDark === false" @click="toggleDark()" alt="">
-  <img id="dark__mode__mobile" src="../assets/navbar/moon-mobile.svg" v-show="isDark === false" @click="toggleDark()" alt="">
+  <img class="dark__mode" src="../assets/navbar/sun.svg" v-show="isDark === true" @click="toggleDark()" alt="">
+  <img class="dark__mode__desktop" src="../assets/navbar/moon.svg" v-show="isDark === false" @click="toggleDark()" alt="">
+  <img class="dark__mode__mobile" src="../assets/navbar/moon-mobile.svg" v-show="isDark === false" @click="toggleDark()" alt="">
 
 </template>
 
@@ -21,13 +21,13 @@ const toggleDark = useToggle(isDark);
   }
 
   @media (max-width: 910px){
-    #dark__mode__desktop{
+    .dark__mode__desktop{
       display: none;
     }
   }
 
   @media (min-width: 910px){
-    #dark__mode__mobile{
+    .dark__mode__mobile{
       display: none;
     }
   }

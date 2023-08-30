@@ -62,7 +62,7 @@ const routerLinks = [
 
   const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
-  };
+  }
 
   watch(isMenuOpen, () => {
     if (isMenuOpen.value) {
@@ -70,7 +70,7 @@ const routerLinks = [
     }else{
       document.body.classList.toggle('menu-open');
     }
-  });
+  })
 
 </script>
 
