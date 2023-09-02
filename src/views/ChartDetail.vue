@@ -75,6 +75,9 @@ let currentTitle = titleDescription.find(item => item.name === id);
 let currentDescription = descriptions.find(item => item.name === id);
 
   async function fetchDataForArctic() {
+    if(arcticData !== null){
+
+    
     const { arcticAPI } = await arcticData();
 
     arcticAPI.forEach((obj) => {
@@ -113,6 +116,9 @@ let currentDescription = descriptions.find(item => item.name === id);
     chartAnimation.value = true
     chartDatasets.value = datasetsArcitc
     dataLoaded.value = true
+  }else{
+    console.log('arcticAPI null')
+  }
   }
 
   async function fetchDataForCo2() {
