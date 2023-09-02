@@ -12,10 +12,6 @@ import { ref, onMounted } from 'vue';
 import Chart from 'chart.js/auto';
 
   const props = defineProps({
-    canvasId: {
-      type: String,
-      required: true,
-    },
     labels: {
       type: Array,
       required: true,
@@ -59,6 +55,8 @@ import Chart from 'chart.js/auto';
 <style lang="scss" scoped>
 
   .chart__container{
+    max-width: 1000px;
+    width: 100%;
     border-radius: 50px;
     padding: 30px; 
     background: rgba(255, 255, 255, .1);

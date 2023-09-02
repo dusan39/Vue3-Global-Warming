@@ -20,15 +20,16 @@
   "arcticTitle": "Informazioni sull'artico",
   "chartInfo": "Questo grafico rappresenta i dati dal ",
   "to": " al ",
-  "arcticInfo": "L'Artico si è riscaldato quasi quattro volte più velocemente del globo dal 1979.",
+  "arcticInfo": "L’Artico si è riscaldato quasi quattro volte più velocemente del globo dal 1979. Il ghiaccio, un tempo stabile ed eterno, ora si scioglie e si ritira, rivelando un mondo alterato sottostante. Mentre il riscaldamento globale stringe la sua morsa, l’Artico diventa una sentinella, lanciando un avvertimento urgente per il nostro pianeta.",
   "co2Title": "Informazioni sul Co2",
-  "co2Info": "L'anidride carbonica nell'atmosfera riscalda il pianeta, provocando il cambiamento climatico, le attività umane hanno aumentato il contenuto di anidride carbonica nell'atmosfera del 50% in meno di 200 anni.",
+  "co2Info": "Il riscaldamento globale è causato principalmente dall’aumento dei gas serra, di cui l’anidride carbonica (CO2) è uno dei contributori più significativi. Gli effetti del riscaldamento globale sui livelli di CO2 fanno parte di un ciclo di feedback complesso e interconnesso che amplifica il problema.",
   "methaneTitle": "Informazioni sul metano",
   "methaneInfo": "Il metano è il principale contributore alla formazione dell'ozono a livello del suolo, un pericoloso inquinante atmosferico e gas serra, la cui esposizione provoca 1 milione di morti premature ogni anno.",
   "no2Title": "Informazioni sul No2",
   "no2Info": "Il protossido di azoto aumenta l'effetto serra proprio come fa l'anidride carbonica catturando la radiazione infrarossa reirradiata dalla superficie terrestre e successivamente riscaldando la troposfera (atmosfera inferiore).",
   "temperatureTitle": "Informazioni sulle temperature",
-  "temperatureInfo": "La luce solare e le alte temperature incoraggiano anche le reazioni chimiche negli inquinanti e aumentano lo smog.",
+  "temperatureInfo": "Il riscaldamento globale, alimentato dalle crescenti emissioni di gas serra, intensifica la temperatura della Terra. Produce ondate di caldo soffocante, modelli meteorologici imprevedibili, ghiacciai in scomparsa e cambiamenti ecologici inquietanti, sottolineando l’urgente necessità di un’azione climatica.",
   "averageStation": "Media delle stazioni",
-  "averageLand": "Media del territorio"
+  "averageLand": "Media del territorio",
+  "chartDetails": "Dettagli chart"
 }

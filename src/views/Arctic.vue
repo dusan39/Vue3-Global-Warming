@@ -57,7 +57,7 @@ import { arcticData } from '../API';
 import { useAverageCalculator } from '../composables/average';
 import Chart from '../components/Chart.vue';
 
-  const isDark = useDark()
+  const isDark = useDark();
 
   const areaData = ref([]);
   const extentData = ref([]);
@@ -157,6 +157,8 @@ import Chart from '../components/Chart.vue';
 
     chartDatasets.value = datasets
     dataLoaded.value = true
+
+    
   }
 
   onMounted(loadArcticAPI)

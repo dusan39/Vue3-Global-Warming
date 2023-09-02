@@ -4,20 +4,20 @@
     <header class="header">
       <div class="header__content">
         <div class="header__logo">
-          <routerLink to="/"><img  src="../assets/logo.svg" alt="global-warming"/></routerLink>
+          <routerLink to="/"><img  src="../assets/navbar/logo.svg" alt="global-warming"/></routerLink>
         </div>
         <ul class="header__menu" @click="toggleMenu">
           <router-link v-for="link in routerLinks" :key="link.name" :to="link.to">{{ $t(link.textKey) }}</router-link>
-          <button class="menu__language" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/united-kingdom.svg" alt=""> </button>
-          <button class="menu__language" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/italy.svg" alt=""> </button>
+          <button class="menu__language" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/navbar/united-kingdom.svg" alt=""> </button>
+          <button class="menu__language" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/navbar/italy.svg" alt=""> </button>
           <div class="darkMode__container">
             <DarkMode></DarkMode>
           </div>    
         </ul>
 
         <div class="header__icons">
-          <button class="menu__language__mobile" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/united-kingdom.svg" alt=""> </button>
-          <button class="menu__language__mobile" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/italy.svg" alt=""> </button>
+          <button class="menu__language__mobile" v-show="locale === 'it'" @click="changeLocale('en')"> <img src="../assets/navbar/united-kingdom.svg" alt=""> </button>
+          <button class="menu__language__mobile" v-show="locale === 'en'" @click="changeLocale('it')"> <img src="../assets/navbar/italy.svg" alt=""> </button>
           <div class="darkMode__container__mobile">
             <DarkMode></DarkMode>
           </div> 
@@ -45,11 +45,11 @@ const isMenuOpen = ref(false);
 
 const routerLinks = [
   { name: 'Home', textKey: 'home', to: { name: 'Home' } },
-  { name: 'Arctic', textKey: 'arctic', to: { name: 'Arctic' } },
-  { name: 'Co2', textKey: 'co2', to: { name: 'Co2' } },
-  { name: 'Methane', textKey: 'methane', to: { name: 'Methane' } },
-  { name: 'No2', textKey: 'no2', to: { name: 'No2' } },
-  { name: 'Temperature', textKey: 'temperature', to: { name: 'Temperature' } }
+  { name: 'Chart', textKey: 'arctic', to: '/chart/arctic' },
+  { name: 'Chart', textKey: 'co2', to: '/chart/co2' },
+  { name: 'Chart', textKey: 'methane', to: '/chart/methane' },
+  { name: 'Chart', textKey: 'no2', to: '/chart/no2' },
+  { name: 'Chart', textKey: 'temperature', to: '/chart/temperature' }
 ];
 
   function changeLocale(newLocale) {

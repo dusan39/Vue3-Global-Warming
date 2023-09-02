@@ -11,7 +11,7 @@
       </div>   
       
       <div class="image__container">
-        <img src="../assets/globe.svg" alt="">
+        <img src="../assets/home/globe.svg" alt="">
         
       </div>
     </div>

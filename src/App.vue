@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <div id="main-content">
+    <div class="main-content">
       <RouterView v-slot="{ Component }">
-        <Transition name="page-slide" mode="out-in">
-          <component :is="Component" />
-        </Transition>
+        <component :is="Component" />
       </RouterView>
     </div>
     <Footer></Footer>
@@ -38,7 +36,7 @@ router.beforeEach((to, from, next) => {
     overflow: hidden;
   }
 
-  #main-content {
+  .main-content {
     flex: 1; 
     overflow-y: auto;
   }
@@ -49,17 +47,6 @@ router.beforeEach((to, from, next) => {
 
   body{
     @apply bg-slate-50 text-slate-800 dark:bg-slate-800 dark:text-slate-50;
-  }
-
-  .page-slide-enter-active,
-  .page-slide-leave-active{
-    transition: 600ms ease all;
-  }
-
-  .page-slide-enter-from,
-  .page-slide-leave-to{
-    opacity: 0;
-    transform: translateY(60px);
   }
 
 </style>
