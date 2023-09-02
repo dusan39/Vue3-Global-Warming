@@ -12,14 +12,6 @@ const routes = [
     }
   },
   {
-    path: '/Arctic',
-    name: 'Arctic',
-    component: () => import('../views/Arctic.vue'),
-    meta: {
-      title: 'arctic'
-    }
-  },
-  {
     path: '/chart/:id',
     name: 'Chart',
     component: () => import('../views/ChartDetail.vue'),
