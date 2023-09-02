@@ -76,85 +76,90 @@ let currentDescription = descriptions.find(item => item.name === id);
 
   async function fetchDataForArctic() {
     if(arcticData !== null){
+      const { arcticAPI } = await arcticData();
 
-    
-    const { arcticAPI } = await arcticData();
+      arcticAPI.forEach((obj) => {
+        const fullDate = obj.month + '/' + obj.year;
+        chartLabels.value.push(fullDate);
+        areaData.value.push(obj.area);
+        rankData.value.push(obj.rank);
+        extentData.value.push(obj.extent);
+      });
 
-    arcticAPI.forEach((obj) => {
-      const fullDate = obj.month + '/' + obj.year;
-      chartLabels.value.push(fullDate);
-      areaData.value.push(obj.area);
-      rankData.value.push(obj.rank);
-      extentData.value.push(obj.extent);
-    });
+      const datasetsArcitc = [
+        {
+          labels: chartLabels.value,
+          data: areaData.value,
+          label: 'Area',
+          backgroundColor: '#a8dadc',
+          borderColor: '#a8dadc',
+        },
+        {
+          labels: chartLabels.value,
+          data: rankData.value,
+          label: 'Rank',
+          backgroundColor: '#19A7CE',
+          borderColor: '#19A7CE',
+        },
+        {
+          labels: chartLabels.value,
+          data: extentData.value,
+          label: 'Extent',
+          backgroundColor: '#FFA500',
+          borderColor: '#FFA500',
+        },
+      ];
 
-    const datasetsArcitc = [
-      {
-        labels: chartLabels.value,
-        data: areaData.value,
-        label: 'Area',
-        backgroundColor: '#a8dadc',
-        borderColor: '#a8dadc',
-      },
-      {
-        labels: chartLabels.value,
-        data: rankData.value,
-        label: 'Rank',
-        backgroundColor: '#19A7CE',
-        borderColor: '#19A7CE',
-      },
-      {
-        labels: chartLabels.value,
-        data: extentData.value,
-        label: 'Extent',
-        backgroundColor: '#FFA500',
-        borderColor: '#FFA500',
-      },
-    ];
+      chartType.value = 'line'
+      chartAnimation.value = true
+      chartDatasets.value = datasetsArcitc
+      dataLoaded.value = true
 
-    chartType.value = 'line'
-    chartAnimation.value = true
-    chartDatasets.value = datasetsArcitc
-    dataLoaded.value = true
-  }else{
-    console.log('arcticAPI null')
-  }
+    }else{
+      console.error('arcticAPI is null!')
+    }
   }
 
   async function fetchDataForCo2() {
-    const { co2API } = await co2Data();
+    if(co2Data !== null){
+      const { co2API } = await co2Data();
 
-    co2API.forEach((obj) => {
-      const fullDate = obj.month + '/' + obj.year;
-      chartLabels.value.push(fullDate);
-      cycleData.value.push(obj.cycle);
-      trendDataCo2.value.push(obj.trend);
-    });
+      co2API.forEach((obj) => {
+        const fullDate = obj.month + '/' + obj.year;
+        chartLabels.value.push(fullDate);
+        cycleData.value.push(obj.cycle);
+        trendDataCo2.value.push(obj.trend);
+      });
 
-    const datasetsCo2 = [
-      {
-        labels: chartLabels.value,
-        data: cycleData.value,
-        label: 'Cycle',
-        backgroundColor: '#485696',
-        borderColor: '#485696',
-      },
-      {
-        labels: chartLabels.value,
-        data: trendDataCo2.value,
-        label: 'Trend',
-        backgroundColor: '#FC7A1E',
-        borderColor: '#FC7A1E',
-      },
-    ];
+      const datasetsCo2 = [
+        {
+          labels: chartLabels.value,
+          data: cycleData.value,
+          label: 'Cycle',
+          backgroundColor: '#485696',
+          borderColor: '#485696',
+        },
+        {
+          labels: chartLabels.value,
+          data: trendDataCo2.value,
+          label: 'Trend',
+          backgroundColor: '#FC7A1E',
+          borderColor: '#FC7A1E',
+        },
+      ];
 
-    chartType.value = 'line'
-    chartAnimation.value = false
-    chartDatasets.value = datasetsCo2
-    dataLoaded.value = true
+      chartType.value = 'line'
+      chartAnimation.value = false
+      chartDatasets.value = datasetsCo2
+      dataLoaded.value = true 
+
+    }else{
+      console.error('co2Data is null!')
+    }
   }
 
   async function fetchDataForMethane() {
+    if(methaneData !== null){
     const { methaneAPI } = await methaneData();
 
     methaneAPI.forEach((obj) => {
@@ -186,73 +191,86 @@ let currentDescription = descriptions.find(item => item.name === id);
     chartAnimation.value = true
     chartDatasets.value = datasetsMethane
     dataLoaded.value = true
+
+    }else{
+      console.error('methaneData is null!')
+    }
   }
 
   async function fetchDataForNo2() {
-    const { no2API } = await no2Data();
+    if(no2Data !== null){
+      const { no2API } = await no2Data();
 
-    no2API.forEach((obj) => {
-      if(obj.date != "#.year"){
-        chartLabels.value.push(obj.date);
+      no2API.forEach((obj) => {
+        if(obj.date != "#.year"){
+          chartLabels.value.push(obj.date);
+        }
+        trendDataNo2.value.push(obj.trend);
+        averageDataNo2.value.push(obj.average);
+      });
+
+      const datasetsNo2 = [
+        {
+          labels: chartLabels.value,
+          data: trendDataNo2.value,
+          label: 'Trend',
+          backgroundColor: '#2D898B',
+          borderColor: '#2D898B',
+        },
+        {
+          labels: chartLabels.value,
+          data: averageDataNo2.value,
+          label: 'Average',
+          backgroundColor: '#88CCF1',
+          borderColor: '#88CCF1',
+        },
+      ];
+
+      chartType.value = 'line'
+      chartAnimation.value = true
+      chartDatasets.value = datasetsNo2
+      dataLoaded.value = true
+
+      }else{
+        console.error('no2Data is null!')
       }
-      trendDataNo2.value.push(obj.trend);
-      averageDataNo2.value.push(obj.average);
-    });
-
-    const datasetsNo2 = [
-      {
-        labels: chartLabels.value,
-        data: trendDataNo2.value,
-        label: 'Trend',
-        backgroundColor: '#2D898B',
-        borderColor: '#2D898B',
-      },
-      {
-        labels: chartLabels.value,
-        data: averageDataNo2.value,
-        label: 'Average',
-        backgroundColor: '#88CCF1',
-        borderColor: '#88CCF1',
-      },
-    ];
-
-    chartType.value = 'line'
-    chartAnimation.value = true
-    chartDatasets.value = datasetsNo2
-    dataLoaded.value = true
-
   }
 
   async function fetchDataForTemperature() {
-    const { temperatureAPI } = await temperatureData()
+    if(temperatureData !== null){
+      const { temperatureAPI } = await temperatureData()
 
-    temperatureAPI.forEach((obj) => {
-      chartLabels.value.push(obj.time);
-      landData.value.push(obj.land);
-      stationData.value.push(obj.station);
-    });
+      temperatureAPI.forEach((obj) => {
+        chartLabels.value.push(obj.time);
+        landData.value.push(obj.land);
+        stationData.value.push(obj.station);
+      });
 
-    const datasetsTemperature = [
-      {
-        labels: chartLabels.value,
-        data: landData.value,
-        label: 'Land',
-        backgroundColor: '#19A7CE',
-        borderColor: '#19A7CE',
-      },
-      {
-        labels: chartLabels.value,
-        data: stationData.value,
-        label: 'Station',
-        backgroundColor: '#146C94',
-        borderColor: '#146C94',
-      }
-    ];
+      const datasetsTemperature = [
+        {
+          labels: chartLabels.value,
+          data: landData.value,
+          label: 'Land',
+          backgroundColor: '#19A7CE',
+          borderColor: '#19A7CE',
+        },
+        {
+          labels: chartLabels.value,
+          data: stationData.value,
+          label: 'Station',
+          backgroundColor: '#146C94',
+          borderColor: '#146C94',
+        }
+      ];
 
-    chartType.value = 'line'
-    chartAnimation.value = true
-    chartDatasets.value = datasetsTemperature
-    dataLoaded.value = true  
+      chartType.value = 'line'
+      chartAnimation.value = true
+      chartDatasets.value = datasetsTemperature
+      dataLoaded.value = true
+      
+      }else{
+        console.error('temperatureData is null!')
+      }  
   }
 
   function changeChart () {
